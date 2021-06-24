@@ -1,0 +1,42 @@
+:root {
+  @each $color, $shades in $colors {
+    @each $shade, $value in $shades {
+      --color-#{$color}-#{$shade}: #{$value};
+    }
+  }
+
+  --color-red-20-outline: #ed1b24;
+  --color-base: var(--color-white-10);
+  --color-footer: var(--color-black-10);
+  --color-footer-paragraph: #bac4e1;
+  --color-border: var(--color-white-20);
+
+  @each $font, $value in $fontfamily {
+    --font-family-#{$font}: #{$value};
+  }
+
+  @each $screen-size, $font-size in $fontSizes {
+    @if $screen-size == lg {
+      @each $size, $value in $font-size {
+        --fs-#{$size}: #{$value};
+      }
+    } @else {
+      @include mq(lg) {
+        @each $size, $value in $font-size {
+          --fs-#{$size}: #{$value};
+        }
+      }
+    }
+  }
+
+  --border-radius: #{$border-radius};
+  --border-radius-circle: #{$border-radius-big};
+  --global-color-text: #333;
+  --h1-font: "Lato", sans-serif;
+  --h3-font: "Open Sans", sans-serif;
+  --padding-big: 5rem 1.6rem;
+  --padding-small: 2rem 0;
+  --title-big: 2rem;
+  --title-small: 1.2rem;
+  --shadow-primary: 0px 8px 16px -4px rgba(#ed1b24, 0.25);
+}

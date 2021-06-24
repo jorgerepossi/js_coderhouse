@@ -1,0 +1,112 @@
+@import "normalize";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend {
+  margin: 0;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-size: 16px;
+
+  @include reset-text;
+  @include list-unstyled;
+
+  color: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none !important;
+}
+
+a,
+.btn-link.focus,
+.btn-link:focus {
+  text-decoration: none !important;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}

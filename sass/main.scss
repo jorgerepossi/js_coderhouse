@@ -1,0 +1,23 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+@import "reset/reboot";
+@import "base/base";
+@import "base/animations";
+@import "base/each";
+
+@import "layouts/main/index";
+
+/* @import "components/index";
+@import "components/columns"; */
+
+@import "layouts/header/index";
+
+/* @import "pages/index";
+@import "pages/productos";
+@import "pages/producto";
+@import "pages/noticias";
+@import "pages/contact";
+@import "pages/cart"; */
+
+//@import "layouts/footer/index";

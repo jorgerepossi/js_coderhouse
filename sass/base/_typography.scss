@@ -1,0 +1,57 @@
+.globalText {
+  font-size: 0.9rem;
+  letter-spacing: -1px;
+
+  @include lineHeight(16px);
+
+  margin-bottom: 0.7rem;
+  opacity: 0.7;
+  font-family: var(--font-family-text);
+}
+
+.superBigTitle {
+  @include lineHeight(2rem);
+
+  font-size: 2.375rem;
+  font-weight: 900;
+  color: $color-white-20;
+  transition: all 0.2s ease-in-out;
+
+  @include mq(xl) {
+    font-size: 4.375rem;
+
+    @include lineHeight(3rem);
+
+    color: $boder-color;
+  }
+
+  span {
+    font-size: 2.375rem;
+
+    @include mq(xl) {
+      font-size: 4.375rem;
+    }
+  }
+}
+
+.bigTitle {
+  line-height: 2.5rem;
+  font-weight: 900;
+  color: var(--color-red-20-outline);
+
+  @include mq(sm) {
+    font-size: var(--fs-h2);
+  }
+
+  @include mq(xl) {
+    font-size: var(--fs-h1);
+  }
+}
+
+.smallTitle {
+  font-size: var(--fs-h4);
+}
+
+.text-white {
+  color: $color-white-20;
+}
