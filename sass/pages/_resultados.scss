@@ -8,3 +8,8 @@ resultados
     flex-direction: column;
     position: relative;
 }
+
+.results__column {
+    height: 980px;
+    overflow-y: overlay;
+}

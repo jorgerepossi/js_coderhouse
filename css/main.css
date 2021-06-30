@@ -1807,9 +1807,17 @@ resultados
   position: relative;
 }
 
+.results__column {
+  height: 980px;
+  overflow-y: overlay;
+}
+
 /*
 @import "pages/productos";
 @import "pages/producto";
 @import "pages/noticias";
 @import "pages/contact";
 @import "pages/cart"; */
+#footer {
+  background-color: #f7f7f7;
+}
