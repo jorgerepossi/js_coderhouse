@@ -1401,8 +1401,7 @@ main {
   background-color: var(--color-bluelight-100);
 }
 
-/* @import "components/index";
- */
+/* @import "components/index";*/
 @media only screen and (min-width: 0) {
   .in-xs-1 {
     -webkit-box-flex: 0;

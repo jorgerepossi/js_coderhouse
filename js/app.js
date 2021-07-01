@@ -8,7 +8,7 @@
  * Desafío: Incorporar Arrays
  */
 
-const app = document.querySelector("#outputText");
+var app = document.querySelector("#outputText");
 const sort = document.querySelector("#sort");
 let zona = "";
 const arrayAlquilar = [];
