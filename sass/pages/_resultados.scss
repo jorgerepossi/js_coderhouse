@@ -10,33 +10,42 @@ resultados
 }
 
 .results__column {
-    width: 703px;
-    overflow-y: auto;
-    flex-shrink: 0;
-    -webkit-box-flex: 0;
-    flex-grow: 0;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-    background-color: #fff;
-    position: relative;
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
-
     &--wrapper {
-        height: 980px;
-        min-height: 0;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
-        overflow-x: hidden;
-        flex: 1 1 auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 30px;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+        max-width: 980px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &--item {
+        padding: 2rem 1.168rem;
     }
 }
+
+/* height: 980px;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex: 1 1 auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 30px;
+      scrollbar-width: none;
+      -ms-overflow-style: none; */
+
+/*   width: 703px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  background-color: #fff;
+  position: relative; */

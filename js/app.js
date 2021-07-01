@@ -7,7 +7,7 @@
  * Alumno: Jorge Repossi
  * Desafío: Incorporar Arrays
  */
-
+/* 
 var app = document.querySelector("#outputText");
 const sort = document.querySelector("#sort");
 let zona = "";
@@ -54,9 +54,14 @@ class Alquilar {
       <li> La ubicación deseada es: ${item.calle} </li>
       <li> El precio del alquiler es de: $${item.precio}</li>`;
 			return obj;
-		});
+    });
+    
 
-		app.innerHTML = items;
+let ulList = document.createElement("ul");
+ulList.innerHTML = items;
+
+app.appendChild(ulList); 
+		return items;
 	}
 }
 
@@ -124,5 +129,12 @@ const verResultados = () => {
 	Resultados();
 };
 console.log(arrayAlquilar);
+
+
 buscarAlquiler();
 verResultados();
+ */
+
+let resultsColumnItem = document.querySelector(".results__column--wrapper");
+const getHeight = resultsColumnItem.clientHeight;
+resultsColumnItem.style = ` max-height: 980px;  height:${getHeight}px`;
