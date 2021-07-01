@@ -10,6 +10,7 @@ resultados
 }
 
 .results__column {
+    min-height: 0;
     height: 980px;
-    overflow-y: overlay;
+    overflow-y: scroll;
 }
