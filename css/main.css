@@ -1816,6 +1816,7 @@ resultados
       -ms-flex-direction: column;
           flex-direction: column;
   max-width: 980px;
+  scrollbar-width: none;
 }
 
 .results__column--wrapper::-webkit-scrollbar {

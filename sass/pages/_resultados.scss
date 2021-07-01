@@ -15,6 +15,7 @@ resultados
         display: flex;
         flex-direction: column;
         max-width: 980px;
+        scrollbar-width: none;
 
         &::-webkit-scrollbar {
             display: none;
