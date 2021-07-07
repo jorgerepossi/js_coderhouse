@@ -23,7 +23,7 @@ const getResults = async () => {
 		const results = await fetch(url);
 		data = await results.json();
 		printData(data);
-		createFilterSort(data);
+		createLessPrice(data);
     createHighPrice(data);
     createFilterAll(data)
 	} catch (err) {
@@ -45,7 +45,7 @@ const printData = () => {
 			template.querySelector(".results__item--title").textContent = property.name;
 			template.querySelector(".results__item--type").innerText    = `${property.type}`;
 			template.querySelector(".results__item--zone").innerText    = `${property.zone}`;
-      template.querySelector(".results__item--price").innerText   =`${property.money}${property.price}`;
+      template.querySelector(".results__item--price").innerText   = `${property.money}${property.price}`;
 			template.querySelector(".results__item--text").innerText    = property.description;
 			const cloneTemplates = template.cloneNode(true);
 			fragment.appendChild(cloneTemplates);
@@ -56,6 +56,7 @@ const printData = () => {
 	}
 };
 
+// Creamos las funciones de filtrado de departamentos
 // Imprimimos los menores precios
 const sortLessPrice = () => {
 	data.sort((a, b) => {
@@ -63,14 +64,17 @@ const sortLessPrice = () => {
 	});
 	printData(data);
 };
-// Imprimimos  los mayores precios
 
+
+// Imprimimos  los mayores precios
 const sortMostPrice = () => {
 	data.sort((a, b) => {
 		return b.price - a.price;
   });
   printData(data);
 };
+
+
 // Imprimimos  todos los  precios
 const sortAll = () => {
   data.sort((a, b) => {
@@ -80,8 +84,8 @@ const sortAll = () => {
 };
 
 
-
-const createFilterSort = () => {
+// Creamos los botones con las  acciones a filtrar 
+const createLessPrice = () => {
 	const buttonCreated = createFilterButton('Menor Precio', 'button');
   buttonCreated.onclick = () => {
     sortLessPrice(data)

@@ -37,7 +37,7 @@
 		"image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-0.jpg",
 		"zone": "Palermo",
 		"type": "departamento",
-		"money": ""
+		"money": "$"
 	},
 	{
 		"id": 4,
@@ -47,7 +47,7 @@
 		"image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-1.jpg",
 		"zone": "Caballito",
 		"type": "departamento",
-		"money": ""
+		"money": "$"
 	},
 	{
 		"id": 5,
@@ -57,18 +57,17 @@
 		"image": "https://imgar.zonapropcdn.com/avisos/1/00/48/00/83/88/360x266/1769425482.jpg",
 		"zone": "",
 		"type": "departamento",
-		"money": ""
+		"money": "$"
 	},
 	{
 		"id": 6,
 		"name": "Otro item mas",
-		"price": 41000,
+		"price": 90000,
 		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
 		"image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-1.jpg",
-
-		"zone": "",
-		"type": "departamento",
-		"money": ""
+		"zone": "Barrio Parque",
+		"type": "casa",
+		"money": "$"
 	},
 	{
 		"id": 7,
@@ -79,6 +78,6 @@
 
 		"zone": "",
 		"type": "departamento",
-		"money": ""
+		"money": "$"
 	}
 ]
