@@ -1,144 +1,151 @@
 <!DOCTYPE html>
 <html lang="es_ES">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafío: Simulador interactivo</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/regular-straight.css" />
+    <style>
+      .label {
+        color: #000;
+        background-color: white;
+        border-radius: 50px;
+        font-weight: 900;
+        font-size: 12px;
+        text-align: center;
+        white-space: nowrap;
+        padding: 10px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desafío: Simulador interactivo</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/regular-straight.css" />
-  <style>
-    .label {
-      color: #000;
-      background-color: white;
-      border-radius: 50px;
-      font-weight: 900;
-      font-size: 12px;
-      text-align: center;
-      white-space: nowrap;
-      padding: 10px;
-    }
+      .label.white {
+        background-color: #fff;
+        box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.3);
+      }
 
+      .label.white:hover {
+        transform: scale(2);
+        transition: all 0.3s ease-in-out;
+        background-color: black;
+      }
+    </style>
+  </head>
 
+  <body>
+    <header class="flex flex-wrap">
+      <section class="flex flex-wrap justify-between full-width items-center">
+        <section class="logo">
+          <a href="index.html"> Logo</a>
+        </section>
 
-    .label.white {
-      background-color: #fff;
-      box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, .3);
-    }
-
-    .label.white:hover {
-      transform: scale(2);
-      transition: all .3s ease-in-out;
-      background-color: black;
-    }
-  </style>
-</head>
-
-<body>
-  <header class="flex flex-wrap">
-    <section class="flex flex-wrap justify-between full-width items-center">
-      <section class="logo">
-        <a href="index.html"> Logo</a>
-      </section>
-
-      <section class="flex flex-wrap">
-        <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
-        <section class="px-4"><i class="fi fi-rs-heart"></i></section>
-        <section class="px-4">
-          <i class="fi fi-rs-menu-burger"></i>
+        <section class="flex flex-wrap">
+          <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
+          <section class="px-4"><i class="fi fi-rs-heart"></i></section>
+          <section class="px-4">
+            <i class="fi fi-rs-menu-burger"></i>
+          </section>
         </section>
       </section>
-    </section>
-  </header>
+    </header>
 
-  <main id="app" role="main" class="flex direction-column">
-    <section id="filters">
-      <section class="flex filters__container">
-        <div>
-          <input type="text" placeholder="buscar">
-        </div>
-        <div>
-          <input type="text" placeholder="buscar">
-        </div>
-
+    <main id="app" role="main" class="flex direction-column">
+      <section id="filters">
+        <section class="flex filters__container">
+          <div>
+            <input type="text" placeholder="buscar" />
+          </div>
+          <div>
+            <input type="text" placeholder="buscar" />
+          </div>
+        </section>
       </section>
-    </section>
-    <section id="results" class="flex">
-      <div class="results__column  in-md-12  in-sm-12 in-lg-5 in-xs-12">
-        <div class="total_results px-4 py-4"></div>
-        <div id="results__column--wrapper" class="results__column--wrapper">
-          <div class="loader">
-            <span class="rotate"></span>
+      <section id="results" class="flex">
+        <div class="results__column in-md-12 in-sm-12 in-lg-5 in-xs-12">
+          <div class="total_results px-4 py-4"></div>
+          <div id="results__column--wrapper" class="results__column--wrapper">
+            <div class="loader">
+              <span class="rotate"></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div id="mapa" class=" in-md-12  in-sm-12 in-lg-7 in-xs-12 flex justify-center items-center">
-        <div class="map__content">mapa</div>
-      </div>
+        <div
+          id="mapa"
+          class="in-md-12 in-sm-12 in-lg-7 in-xs-12 flex justify-center items-center"
+        >
+          <div class="map__content">mapa</div>
+        </div>
 
-      <template id="template-results">
-        <div class="results__column--item">
-          <div class="flex flex-wrap">
-            <div class="in-md-12  in-sm-12 in-lg-6 in-xs-12">
-              <div class="results__column--img">
-
-                <picture>
-                  <img src="assets/img/imagen-1.jpeg" alt="" class="" data-img />
-                </picture>
+        <template id="template-results">
+          <div class="results__column--item">
+            <div class="flex flex-wrap">
+              <div class="in-md-12 in-sm-12 in-lg-6 in-xs-12">
+                <div class="results__column--img">
+                  <picture>
+                    <img
+                      src="assets/img/imagen-1.jpeg"
+                      alt=""
+                      class=""
+                      data-img
+                    />
+                  </picture>
+                </div>
               </div>
-            </div>
-            <div class="in-md-12 in-sm-12 in-xs-12 in-lg-6 px-1 flex">
-              <div class="results__item flex flex-wrap">
-                <div class="flex flex-wrap justify-between full-width">
-                  <div class="full-width">
-                    <span class="results__item--type"></span>
-                    <p class="results__item--title">Titulo</p>
-                    <div class="results__items--price-wrapper flex flex-wrap justify-between">
-                      <span class="results__item--zone"></span>
-                      <span class="results__item--price"></span>
+              <div class="in-md-12 in-sm-12 in-xs-12 in-lg-6 px-1 flex">
+                <div class="results__item flex flex-wrap">
+                  <div class="flex flex-wrap justify-between full-width">
+                    <div class="full-width">
+                      <span class="results__item--type"></span>
+                      <p class="results__item--title">Titulo</p>
+                      <div
+                        class="results__items--price-wrapper flex flex-wrap justify-between"
+                      >
+                        <span class="results__item--zone"></span>
+                        <span class="results__item--price"></span>
+                      </div>
+                    </div>
+                    <div class="full-width favourite">
+                      <i class="fi fi-rs-heart"></i>
                     </div>
                   </div>
-                  <div class="full-width favourite"><i class="fi fi-rs-heart"></i></div>
-                </div>
-                <div class="flex-grow">
-                  <p class="results__item--text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit.
-                  </p>
-                </div>
-                <div id="results__item--buttons" class="flex justify-between full">
-                  <button>telefono</button>
-                  <button>contacto</button>
+                  <div class="flex-grow">
+                    <p class="results__item--text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                  </div>
+                  <div
+                    id="results__item--buttons"
+                    class="flex justify-between full"
+                  >
+                    <button>telefono</button>
+                    <button>contacto</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </template>
-    </section>
-  </main>
-
-  <footer id="footer" class="my-8 py-8 full-width">
-    <div class="container mx-auto">
-      <section class="flex flex-wrap">menu footer</section>
-      <section class="flex flex-wrap justify-between">
-        <p>
-          &copy; 2021 Alquileo - <a href="#">Privacidad</a>
-          <a href="#"> Términos</a> <a href="#">Mapa del sitio</a>
-        </p>
-        <p>Hecho con <i class="fi fi-rs-heart"></i> por Jo Repossi</p>
+        </template>
       </section>
-    </div>
-  </footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
-  <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
+    </main>
 
-  <script src="js/points.js"></script>
+    <footer id="footer" class="my-8 py-8 full-width">
+      <div class="container mx-auto">
+        <section class="flex flex-wrap">menu footer</section>
+        <section class="flex flex-wrap justify-between">
+          <p>
+            &copy; 2021 Alquileo - <a href="#">Privacidad</a>
+            <a href="#"> Términos</a> <a href="#">Mapa del sitio</a>
+          </p>
+          <p>Hecho con <i class="fi fi-rs-heart"></i> por Jo Repossi</p>
+        </section>
+      </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
+    <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
 
-  <script src="js/app.js"></script>
-</body>
+    <script src="js/points.js"></script>
 
+    <script src="js/app.js"></script>
+  </body>
 </html>
