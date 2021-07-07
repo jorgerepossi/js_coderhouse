@@ -1,29 +1,64 @@
 // Windows Sizes
-$breakpoints: (small: 769px, medium: 981px, large: 1200px, xlarge: 2000px);
+$breakpoints: (
+  small: 769px,
+  medium: 981px,
+  large: 1200px,
+  xlarge: 2000px,
+);
 
-$mq-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px) !default;
+$mq-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
 
 $transitions: all 0.3s ease-in-out;
 
 // Colors
-$color-white-10: lighten($color: hsl(0, 0, 95%), $amount: 20);
+$color-white-10: lighten(
+  $color: hsl(0, 0, 95%),
+  $amount: 20,
+);
 
 $color-white-20: hsl(0, 0%, 95%);
-$color-white-30: darken($color: $color-white-20, $amount: 10);
+$color-white-30: darken(
+  $color: $color-white-20,
+  $amount: 10,
+);
 
-$color-white-40: darken($color: $color-white-30, $amount: 10);
+$color-white-40: darken(
+  $color: $color-white-30,
+  $amount: 10,
+);
 
-$color-white-50: darken($color: $color-white-40, $amount: 10);
+$color-white-50: darken(
+  $color: $color-white-40,
+  $amount: 10,
+);
 
 // color red
-$color-red-10: lighten($color: hsl(357, 85%, 52%), $amount: 20);
+$color-red-10: lighten(
+  $color: hsl(357, 85%, 52%),
+  $amount: 20,
+);
 
 $color-red-20: hsl(357, 85%, 52%);
-$color-red-30: darken($color: $color-red-20, $amount: 10);
+$color-red-30: darken(
+  $color: $color-red-20,
+  $amount: 10,
+);
 
-$color-red-40: darken($color: $color-red-30, $amount: 10);
+$color-red-40: darken(
+  $color: $color-red-30,
+  $amount: 10,
+);
 
-$color-red-50: darken($color: $color-red-40, $amount: 10);
+$color-red-50: darken(
+  $color: $color-red-40,
+  $amount: 10,
+);
 
 // color Blue
 $color-bl-100: hsl(225, 39%, 90%);
@@ -34,7 +69,40 @@ $color-bl-500: hsl(225, 39%, 50%);
 $color-bl-600: hsl(225, 39%, 40%);
 $color-bl-700: hsl(225, 39%, 30%);
 
-$colors: (white: (10: $color-white-10, 20: $color-white-20, 30: $color-white-30, 40: $color-white-40, 50: $color-white-50), bluelight: (100: $color-bl-100, 200: $color-bl-200, 300: $color-bl-300, 400: $color-bl-400, 500: $color-bl-500, 600: $color-bl-600, 700: $color-bl-700), green: (10: hsl(158, 52%, 61%), 20: hsl(158, 52%, 50%), 30: hsl(158, 52%, 40%), 40: hsl(158, 52%, 30%)), red: (10: hsl(357, 100%, 80%), 20: $color-red-20, 30: $color-red-30, 40: $color-red-40, 50: $color-red-50), black: (10: hsl(150, 14%, 15%)));
+$colors: (
+  white: (
+    10: $color-white-10,
+    20: $color-white-20,
+    30: $color-white-30,
+    40: $color-white-40,
+    50: $color-white-50,
+  ),
+  bluelight: (
+    100: $color-bl-100,
+    200: $color-bl-200,
+    300: $color-bl-300,
+    400: $color-bl-400,
+    500: $color-bl-500,
+    600: $color-bl-600,
+    700: $color-bl-700,
+  ),
+  green: (
+    10: hsl(158, 52%, 61%),
+    20: hsl(158, 52%, 50%),
+    30: hsl(158, 52%, 40%),
+    40: hsl(158, 52%, 30%),
+  ),
+  red: (
+    10: hsl(357, 100%, 80%),
+    20: $color-red-20,
+    30: $color-red-30,
+    40: $color-red-40,
+    50: $color-red-50,
+  ),
+  black: (
+    10: hsl(150, 14%, 15%),
+  ),
+);
 
 // Border
 $border-radius: 0.25rem;
@@ -53,36 +121,102 @@ $font-size-h4: moreBigger($font-size-general, 0.7);
 $font-family-base: "Roboto", sans-serif;
 
 $font-weight-normal: inherit;
-$font-sizes: (sm: (300: 1rem, 400: 1.125rem, 500: 1.563rem, 600: 1.938rem, 700: 2.438rem, 800: 3.125rem), lg: (300: 1rem, 400: 1.438rem, 500: 2rem, 600: 2.5rem, 700: 4rem, 800: 4.375rem));
+$font-sizes: (
+  sm: (
+    300: 1rem,
+    400: 1.125rem,
+    500: 1.563rem,
+    600: 1.938rem,
+    700: 2.438rem,
+    800: 3.125rem,
+  ),
+  lg: (
+    300: 1rem,
+    400: 1.438rem,
+    500: 2rem,
+    600: 2.5rem,
+    700: 4rem,
+    800: 4.375rem,
+  ),
+);
 
-$fontSizes: (sm: (general: $font-size-general, h1: 2rem, h2: 1.938rem, h3: 1.563rem, h4: 0.8rem), lg: (general: $font-size-general, h1: $font-size-h1, h2: $font-size-h2, h3: $font-size-h3, h4: $font-size-h4));
+$fontSizes: (
+  sm: (
+    general: $font-size-general,
+    h1: 2rem,
+    h2: 1.938rem,
+    h3: 1.563rem,
+    h4: 0.8rem,
+  ),
+  lg: (
+    general: $font-size-general,
+    h1: $font-size-h1,
+    h2: $font-size-h2,
+    h3: $font-size-h3,
+    h4: $font-size-h4,
+  ),
+);
 
 $line-height-base: inherit;
 
-$fontfamily: (global: "'Roboto', sans-serif", text: "'Open Sans',system-ui,-apple-systemHelvetica Neue,Helvetica,Arial,sans-serif");
+$fontfamily: (
+  global: "'Roboto', sans-serif",
+  text:
+    "'Open Sans',system-ui,-apple-systemHelvetica Neue,Helvetica,Arial,sans-serif",
+);
 
 // Flez system
 
-$display: (flex: "flex", inline-flex: "inline-flex");
+$display: (
+  flex: "flex",
+  inline-flex: "inline-flex",
+);
 
-$flex: (wrap: "wrap", reverse: "wrap-reverse;", nowrap: "nowrap");
+$flex: (
+  wrap: "wrap",
+  reverse: "wrap-reverse;",
+  nowrap: "nowrap",
+);
 
 //in-reverse: "column-reverse",
 // row-reverse: "row-reverse",
-$directions: (row: "row", column: "column");
+$directions: (
+  row: "row",
+  column: "column",
+);
 
 //evenly: "space-evenly",
-$align-contents: (center: "center", start: "flex-start", end: "flex-end", between: "space-between", around: "space-around");
+$align-contents: (
+  center: "center",
+  start: "flex-start",
+  end: "flex-end",
+  between: "space-between",
+  around: "space-around",
+);
 
 //baseline: "baseline",
 //stretch: "stretch",
-$align-items: (start: "flex-start", end: "flex-end", center: "center");
+$align-items: (
+  start: "flex-start",
+  end: "flex-end",
+  center: "center",
+);
 
 //evenly: "space-evenly",
-$justify-contents: (start: "flex-start", end: "flex-end", center: "center", between: "space-between", around: "space-around");
+$justify-contents: (
+  start: "flex-start",
+  end: "flex-end",
+  center: "center",
+  between: "space-between",
+  around: "space-around",
+);
 
 //stretch: "stretch",
-$justify-items: (start: "start", end: "flex-end", center: "center");
+$justify-items: (
+  start: "start",
+  end: "flex-end",
+  center: "center",
+);
 
 // $justify-selfs: (
 // auto: "auto",
@@ -100,4 +234,13 @@ $col: $grid-columns;
 //
 $gutter: 0.25rem;
 
-$gutters: (1: $gutter, 2: $gutter * 2, 3: $gutter * 3, 4: $gutter * 4, 5: $gutter * 5, 6: $gutter * 6, 7: $gutter * 7, 8: $gutter * 8);
+$gutters: (
+  1: $gutter,
+  2: $gutter * 2,
+  3: $gutter * 3,
+  4: $gutter * 4,
+  5: $gutter * 5,
+  6: $gutter * 6,
+  7: $gutter * 7,
+  8: $gutter * 8,
+);

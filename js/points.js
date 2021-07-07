@@ -1,13 +1,5 @@
 function initMap() {
-	//set your google maps parameters
-	var latitude = -34.6168364,
-		longitude = -58.5791748,
-		map_zoom = 16;
-
-	//define the basic color of your map, plus a value for saturation and brightness
-	var main_color = "#E2B755",
-		saturation_value = -20,
-		brightness_value = 5;
+	var map_zoom = 16;
 
 	var map = new google.maps.Map(document.getElementById("mapa"), {
 		center: {
@@ -27,7 +19,7 @@ function initMap() {
 				elementType: "geometry",
 				stylers: [
 					{
-						color: "#f7f8fd",
+						color: "#E8E8E8",
 					},
 				],
 			},
@@ -61,7 +53,7 @@ function initMap() {
 				elementType: "labels.text.fill",
 				stylers: [
 					{
-						color: "#bdbdbd",
+						color: "#EEEEF1",
 					},
 				],
 			},
@@ -70,7 +62,7 @@ function initMap() {
 				elementType: "geometry",
 				stylers: [
 					{
-						color: "#eeeeee",
+						color: "#E8E8E8",
 					},
 				],
 			},
@@ -79,7 +71,7 @@ function initMap() {
 				elementType: "geometry",
 				stylers: [
 					{
-						color: "#e5e5e5",
+						color: "#C2E6A7",
 					},
 				],
 			},
@@ -88,7 +80,7 @@ function initMap() {
 				elementType: "labels.text.fill",
 				stylers: [
 					{
-						color: "#9e9e9e",
+						color: "#000000",
 					},
 				],
 			},
@@ -170,7 +162,7 @@ function initMap() {
 				elementType: "labels.text.fill",
 				stylers: [
 					{
-						color: "#9e9e9e",
+						color: "#EEEEF1",
 					},
 				],
 			},
@@ -197,7 +189,7 @@ function initMap() {
 				elementType: "geometry",
 				stylers: [
 					{
-						color: "#c9c9c9",
+						color: "#A2DBFA",
 					},
 				],
 			},
@@ -212,24 +204,44 @@ function initMap() {
 			},
 		],
 	});
+	var icons = {
+		white: {
+			url: "https://goo.gl/qvLZ4R",
+			color: "#58D400",
+		},
+  };
+  
+	var locations = [
+		["$15.000", -34.6168364, -58.5791748, "white", 38, -3],
+		["$18.000", -34.6168364, -58.5691748, "white", 38, -3],
+		["$35.000", -34.6168456, -58.5892345, "white", 38, -3],
+		["$50.000", -34.6168456, -58.5828543, "white", 38, -3],
+		["$40.000", -34.6134721, -58.5828321, "white", 38, -3],
+	];
 
-	var marker = new google.maps.Marker({
-		position: new google.maps.LatLng(latitude, longitude),
-		map: map,
-		visible: true,
-		icon: "http://www.carpinteriabless.com.ar/cd-icon-location.png",
-	});
+	for (var i = 0; i < locations.length; i++) {
+		var item = locations[i];
+		marker = new MarkerWithLabel({
+			position: { lat: item[1], lng: item[2] },
+			map: map,
+			icon: icons[item[3]].url,
+			labelContent: item[0],
+			labelAnchor: new google.maps.Point(item[4], item[5]),
+			labelClass: "label " + item[3],
+			labelInBackground: false,
+			dataset: {
+				id: item[i],
+			},
+		});
+	}
 }
 
-//add custom buttons for the zoom-in/zoom-out on the map
 function CustomZoomControl(controlDiv, map) {
-	//grap the zoom elements from the DOM and insert them in the map
 	var controlUIzoomIn = document.getElementById("cd-zoom-in"),
 		controlUIzoomOut = document.getElementById("cd-zoom-out");
 	controlDiv.appendChild(controlUIzoomIn);
 	controlDiv.appendChild(controlUIzoomOut);
 
-	// Setup the click event listeners and zoom-in or out according to the clicked element
 	google.maps.event.addDomListener(controlUIzoomIn, "click", function () {
 		map.setZoom(map.getZoom() + 1);
 	});
@@ -238,5 +250,4 @@ function CustomZoomControl(controlDiv, map) {
 	});
 }
 
-var zoomControlDiv = document.createElement("div");
-var zoomControl = new CustomZoomControl(zoomControlDiv, map);
+google.maps.event.addDomListener(window, "load", initMap());
