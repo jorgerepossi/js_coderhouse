@@ -1,0 +1,16 @@
+.button {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: .8rem;
+    padding: .8rem 1rem;
+    margin: 10px; line-height: 1rem;
+    text-transform: capitalize;
+    &--active {
+        background-color: var(--color-black-10);
+        color: white;
+    }
+    
+  }

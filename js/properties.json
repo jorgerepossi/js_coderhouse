@@ -21,11 +21,11 @@
   },
   {
     "id": 2,
-    "name": "Austria 1900",
+    "name": "Av. Belgrano",
     "price": 25000,
     "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
     "image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-2.jpg",
-    "zone": "Recoleta",
+    "zone": "Boedo",
     "type": "departamento",
     "money": "$"
   },
@@ -41,7 +41,7 @@
   },
   {
     "id": 4,
-    "name": "Otro item mas",
+    "name": "Av. José María Moreno 1445",
     "price": 15000,
     "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
     "image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-1.jpg",
@@ -55,13 +55,13 @@
     "price": 38700,
     "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
     "image": "https://imgar.zonapropcdn.com/avisos/1/00/48/00/83/88/360x266/1769425482.jpg",
-    "zone": "",
+    "zone": "Barrio Norte",
     "type": "departamento",
     "money": "$"
   },
   {
     "id": 6,
-    "name": "Otro item mas",
+    "name": "Av. Pres. Figueroa Alcorta 3548",
     "price": 90000,
     "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
     "image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-1.jpg",
@@ -71,12 +71,11 @@
   },
   {
     "id": 7,
-    "name": "Otro",
+    "name": "Av. Santa Fe 745",
     "price": 12000,
     "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
     "image": "http://www.alquileo.jrepossi.com/assets/img/properties/property-2.jpg",
-
-    "zone": "",
+	 "zone": "Olivos",
     "type": "departamento",
     "money": "$"
   }

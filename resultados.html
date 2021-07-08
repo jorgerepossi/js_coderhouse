@@ -7,6 +7,8 @@
     <title>Desafío: Simulador interactivo</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/regular-straight.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap" rel="stylesheet">
+
     <style>
       .label {
         color: #000;
@@ -51,16 +53,16 @@
 
     <main id="app" role="main" class="flex direction-column">
       <section id="filters">
-        <section class="flex filters__container">
-          <div>
-            <input type="text" placeholder="buscar" />
-          </div>
-          <div>
-            <input type="text" placeholder="buscar" />
-          </div>
+        <section class="flex filters__container flex-wrap items-center">
+         <div  class="flex  flex-wrap items-center px-4">
+          <p class=" px-2">Filtros </p><i class="fi-rs-settings-sliders"></i> 
+         </div>
+          <select name="barrio" id="filterNeighborhood" class="button">
+            <option value="Filtrar por Barrios" selected disabled>Filtrar por Barrios</option>
+          </select>
         </section>
       </section>
-      <section id="results" class="flex">
+      <section id="results" class="flex flex-wrap">
         <div class="results__column in-md-12 in-sm-12 in-lg-5 in-xs-12">
           <div class="total_results px-4 py-4"></div>
           <div id="results__column--wrapper" class="results__column--wrapper">
@@ -83,7 +85,7 @@
                 <div class="results__column--img">
                   <picture>
                     <img
-                      src="assets/img/imagen-1.jpeg"
+                      src="assets/img/spinner.gif"
                       alt=""
                       class=""
                       data-img
@@ -117,8 +119,8 @@
                     id="results__item--buttons"
                     class="flex justify-between full"
                   >
-                    <button>telefono</button>
-                    <button>contacto</button>
+                    <a class="button">telefono</a>
+                    <a  href="#" class="button button--active">ver mas</a>
                   </div>
                 </div>
               </div>
