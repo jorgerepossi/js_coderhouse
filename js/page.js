@@ -8,8 +8,8 @@ function getParamName(paramName) {
 const get =  getParamName('page')
 
 root.innerHTML = get;
-
-if (get == 'producto') {
+let id = 2
+if (get == id) {
    console.log('esta bien ') 
 } else {
     console.log('es distinto')

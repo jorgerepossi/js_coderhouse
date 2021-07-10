@@ -8,7 +8,14 @@
     padding: .8rem 1rem;
     margin: 10px; line-height: 1rem;
     text-transform: capitalize;
+   
     &--active {
+        background-color: var(--color-black-10);
+        color: white;
+    }
+
+    &:hover {
+        transition: all .2s ease-in-out;
         background-color: var(--color-black-10);
         color: white;
     }

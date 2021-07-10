@@ -25,14 +25,14 @@ resultsColumnItem.style = ` max-height: 980px;`;
  */
 
 const getResults = async () => {
-    try {
-        const results = await fetch(url);
-        data = await results.json();
-        printData(data);
-        createLessPrice(data);
-        createHighPrice(data);
-        createFilterAll(data);
-        selectFilterByZone(data)
+  try {
+    const results = await fetch(url);
+    data = await results.json();
+    printData(data);
+    createLessPrice(data);
+    createHighPrice(data);
+    selectFilterByZone(data);
+    createFilterAll(data);
     } catch (err) {
         console.log(err);
     }
@@ -56,10 +56,10 @@ const printData = (data) => {
         data.forEach((property) => {
             template.querySelector(".results__column--img picture img").setAttribute("src", property.image);
             template.querySelector(".results__item--title").textContent = property.name;
-            template.querySelector(".results__item--type").innerText = `${property.type}`;
-            template.querySelector(".results__item--zone").innerText = `${property.zone}`;
-            template.querySelector(".results__item--price").innerText = `${ 	property.money }${String(property.price).replace(/(.)(?=(\d{3})+$)/g, "$1.")}`;
-            template.querySelector(".results__item--text").innerText = property.description;
+            template.querySelector(".results__item--type").innerText    = `${property.type}`;
+            template.querySelector(".results__item--zone").innerText    = `${property.neighborhood}`;
+            template.querySelector(".results__item--price").innerText   = `${property.money }${String(property.price).replace(/(.)(?=(\d{3})+$)/g, "$1.")}`;
+            template.querySelector(".results__item--text").innerText    = property.description;
             const cloneTemplates = template.cloneNode(true);
             fragment.appendChild(cloneTemplates);
         });
@@ -95,15 +95,16 @@ const  showAll = () => {
     data.sort((a, b) => {
         return a.id - b.id;
     });
-    printData(data);
+  printData(data);
+  filters.reset();
 };
 
 // Imprimimos  por zona
 const showZone = (selected) => {
     const getZone = data.filter((item) => {
-        return item.zone === selected.zone
+        return item.neighborhood === selected.neighborhood
     })
-    totalResults.innerHTML = `<p class="px-4">Se ${getZone.length <= 1 ? 'encontró' : 'encontraron'} <b>${getZone.length}</b>  ${getZone.length <= 1 ? 'resultado' : 'resultados'} en ${selected.zone}</p>`;
+    totalResults.innerHTML = `<p class="px-4">Se ${getZone.length <= 1 ? 'encontró' : 'encontraron'} <b>${getZone.length}</b>  ${getZone.length <= 1 ? 'resultado' : 'resultados'} en ${selected.neighborhood}</p>`;
     printData(getZone);
  
     
@@ -143,11 +144,10 @@ const selectFilterByZone = () => {
     const select = createSelectFilter();
     filterSelect.onchange = (e) => {
         const elementTarget = e.target.value
-        const barrios = data.find(barrio => barrio.zone === elementTarget)
+        const barrios = data.find(barrio => barrio.neighborhood === elementTarget)
         showZone(barrios)
     };
-
-    filters.appendChild(select);
+    filters.appendChild(filterSelect);
 }
 
 
@@ -159,20 +159,20 @@ const selectFilterByZone = () => {
  */
 
 const createSelectFilter = () => {
-  const options = data.map((item) => {
-      const elementOption = document.createElement("option");
-        elementOption.innerHTML = item.zone;
-        elementOption.classList = "selectOption";
-        elementOption.value = item.zone;
-        elementOption.tagName = item.zone;
-        filterSelect.appendChild(elementOption);
-    })
+  const reduce = data.reduce((map, obj) => map.set(obj.neighborhood, obj), new Map());
 
-    return options
+  const options = reduce.forEach(item => {
+    const elementOption = document.createElement("option");
+    elementOption.innerHTML = item.neighborhood;
+    elementOption.classList = "selectOption";
+    elementOption.value = item.neighborhood;
+    elementOption.tagName = item.neighborhood;
+    filterSelect.appendChild(elementOption);
+})
+ 
+return  options;
+  
 };
-
-
-
 
 const createFilterButton = (text, fn) => {
     const createFilterButton = document.createElement("button");

@@ -7,24 +7,43 @@ resultados
     flex: 1 1 auto;
     flex-direction: column;
     position: relative;
-    height: 100vh;
+    
+}
+
+#filters {
+    border-bottom: 1px solid var(--color-white-20);
+    padding-bottom: 1rem;
 }
 
 .results {
     &__item {
         position: relative;
+
         &--title {
-          font-size: 1.3rem;
-          font-weight: 800;
-      }
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+       
         &--type {
             color: var(--color-white-50);
             text-transform: capitalize;
             font-size: .9rem;
         }
+
+        i {
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white-50)
+        }
     }
 
     &__column {
+        overflow: hidden;
+        height: 100%;
+        max-height: 1080px;
+        padding: 0;
         &--wrapper {
             overflow-y: auto;
             display: flex;
@@ -43,7 +62,7 @@ resultados
         }
 
         &--img {
-            border-radius: 5px;
+            border-radius: .5rem;
             overflow: hidden;
         }
     }

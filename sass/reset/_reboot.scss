@@ -71,7 +71,7 @@ legend {
 
   @include reset-text;
   @include list-unstyled;
-
+  transition: inherit;
   color: inherit;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
