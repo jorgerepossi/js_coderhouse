@@ -9,8 +9,12 @@ body {
 }
 
 main {
-  flex: 1 1 auto;
+  flex: none;
   margin-top: 5rem;
+  display: block;
+  @include mq(lg) {
+    flex: 1 1 auto;
+  }
 }
 
 .hero {
@@ -66,4 +70,3 @@ main {
     }
   }
 }
-

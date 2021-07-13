@@ -33,6 +33,66 @@
       transition: all 0.3s ease-in-out;
       background-color: black;
     }
+
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
   </style>
 </head>
 
@@ -46,6 +106,12 @@
       <section class="flex flex-wrap">
         <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
         <section class="px-4"><i class="fi fi-rs-heart"></i></section>
+        <section class="switchTheme">
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </section>
         <section class="px-4">
           <i class="fi fi-rs-menu-burger"></i>
         </section>
@@ -59,9 +125,17 @@
         <div class="flex  flex-wrap items-center px-4">
           <p class=" px-2">Filtros </p><i class="fi-rs-settings-sliders"></i>
         </div>
+        <button id="highPrice" class="button"></button>
+        <button id="lessPrice" class="button"></button>
+        <select name="zona" id="filterZone" class="button">
+          <option value="Filtrar por Zona" selected disabled>Filtrar por Zona</option>
+        </select>
         <select name="barrio" id="filterNeighborhood" class="button">
           <option value="Filtrar por Barrios" selected disabled>Filtrar por Barrios</option>
         </select>
+        
+
+
       </section>
     </section>
     <section id="results" class="flex flex-wrap">
@@ -71,6 +145,8 @@
           <div class="loader">
             <span class="rotate"></span>
           </div>
+
+
         </div>
       </div>
       <div id="mapa" class="in-md-12 in-sm-12 in-lg-6 in-xl-7 in-xs-12 flex justify-center items-center">
@@ -95,13 +171,13 @@
                     <p class="results__item--title">Titulo</p>
                     <div class="results__items--price-wrapper flex flex-wrap justify-between">
                       <div>
-                        
+
                         <span class="flex">
                           <i class="fi-rs-marker"> </i>
                           <span class="results__item--zone"></span>
                         </span>
 
-                        
+
                       </div>
                       <div class="results__item--money-item">
                         <span class="flex">
@@ -132,7 +208,7 @@
   </main>
 
   <footer id="footer" class="my-8 py-8 full-width">
-    <div class="container mx-auto">
+    <div class="container mx-auto px-4">
       <section class="flex flex-wrap">menu footer</section>
       <section class="flex flex-wrap justify-between">
         <p>
@@ -151,6 +227,9 @@
   <script src="js/points.js"></script>
 
   <script src="js/app.js"></script>
+  <script type="text/javascript">
+    getResults();
+  </script>
 </body>
 
 </html>
