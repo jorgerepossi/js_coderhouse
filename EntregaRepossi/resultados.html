@@ -34,6 +34,65 @@
       background-color: black;
     }
 
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked+.slider {
+      background-color: #2196F3;
+    }
+
+    input:focus+.slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked+.slider:before {
+      -webkit-transform: translateX(16px);
+      -ms-transform: translateX(16px);
+      transform: translateX(16px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
   </style>
 </head>
 
@@ -44,9 +103,9 @@
         <a href="index.html"> Logo</a>
       </section>
 
-      <section class="flex flex-wrap items-center">
+      <section class="flex flex-wrap">
         <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
-        <section id="getFavorites" class="px-4"><i class="fi fi-rs-heart"></i> <span class="hide"></span></section>
+        <section id="getFavorites" class="px-4"><i class="fi fi-rs-heart"></i> <span></span></section>
         <section class="switchTheme">
           <label class="switch">
             <input type="checkbox">
@@ -98,9 +157,7 @@
     <template id="template-results">
 
       <div class="results__column--item">
-
-        <div class="flex flex-wrap items-center">
-          <button type="button" class="iconFav" data-id></button>
+        <div class="flex flex-wrap">
 
           <div class="in-md-12 in-sm-12 in-lg-12 in-xl-6 in-xs-12">
             <div class="results__column--img">
@@ -132,6 +189,7 @@
                       </span>
                     </div>
                   </div>
+                  <button type="button" class="iconFav" data-id></button>
                 </div>
                 <div class="flex-grow">
                   <p class="results__item--text">
