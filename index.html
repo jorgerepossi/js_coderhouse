@@ -21,10 +21,16 @@
         <section class="logo">
           <a href="index.html"> Logo</a>
         </section>
-
-        <section class="flex flex-wrap">
+  
+        <section class="flex flex-wrap items-center">
           <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
-          <section class="px-4"><i class="fi fi-rs-heart"></i></section>
+          <section id="getFavorites" class="px-4"><i class="fi fi-rs-heart"></i> <span class="hide"></span></section>
+          <section class="switchTheme">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </section>
           <section class="px-4">
             <i class="fi fi-rs-menu-burger"></i>
           </section>
@@ -194,5 +200,10 @@
         </section>
       </div>
     </footer>
+
+    <script src="js/app.js"></script>
+    <script type="text/javascript">
+      getIndexFn();
+    </script>
   </body>
 </html>

@@ -14,16 +14,16 @@ let switchTheme = document.querySelector('input[type="checkbox"]');
 let filters = document.querySelector(".filters__container");
 let loader = document.querySelector(".loader");
 let buttons = document.querySelectorAll(".button");
-let lessPrice = document.querySelector("#lessPrice");
+var lessPrice = document.querySelector("#lessPrice");
 let highPrice = document.querySelector("#highPrice");
 let fragment = document.createDocumentFragment();
 let totalResults = document.querySelector(".total_results");
 let filterSelect = document.querySelector("#filterNeighborhood");
 let filterSelectZone = document.querySelector("#filterZone");
-let template = document.querySelector("#template-results").content;
 let resultsColumnItem = document.querySelector("#results__column--wrapper");
-let getHeight = resultsColumnItem.clientHeight;
-let totalFav = document.querySelector('#getFavorites span')
+let totalFav = document.querySelector("#getFavorites span");
+ 
+
 /**
  * Creamos la función para traer los datos del JSON
  * Obtenemos los datos mediante un fetch
@@ -32,109 +32,55 @@ let totalFav = document.querySelector('#getFavorites span')
 const getResults = async () => {
 	try {
 		const results = await fetch(url);
-
 		data = await results.json();
 		printData(data);
 		selectFilterByZone(data);
 		selectFilterByNeighborhood(data);
 		createFilterAll(data);
-    getFavoritesLength();
+		getFavoritesLength();
 	} catch (err) {
 		console.log(err);
 	}
 };
 
-/**
- * Imprimimos los resultados con un forEach
- * Recibimos el parámetro data para poder hacer los filtros
- * @param {*} data
- */
-
-resultsColumnItem.onclick = (e) => {
-	e.target.classList.add("disabled");
-	e.target.setAttribute("disabled", "disabled");
-  getFavourites(e);
-  getFavoritesLength();
-};
-
-const getFavourites = (e) => {
-	let fav = e.target.classList.contains("iconFav");
-	if (fav) {
-		favObject(e.target.parentNode);
-	}
-	e.stopPropagation();
-};
-
-const favObject = (property) => {
-	const favouriteStorage = {
-		id: property.querySelector(".iconFav").dataset.id,
-		address: property.querySelector(".results__item--title").textContent,
-		price: property.querySelector(".results__item--price").textContent,
-		quantity: 1,
-	};
-	
-  saveFavStorage(favouriteStorage);
-};
-
-const saveFavStorage = (favouriteStorage) => {
-  if (localStorage.getItem("favorites") === null) {
-		let saveFav = [];
-		saveFav.push(favouriteStorage);
-		localStorage.setItem("favorites", JSON.stringify(saveFav));
-	} else {
-		let saveFav = JSON.parse(localStorage.getItem("favorites"));
-		saveFav.push(favouriteStorage);
-    localStorage.setItem("favorites", JSON.stringify(saveFav));
-    getFavoritesLength();
-  }
-}
-
-const getFavoritesLength = () => {
-  let saveFav = JSON.parse(localStorage.getItem("favorites"));
-  let numsOfFavourites = '';
-  if (saveFav === null ) {
-     numsOfFavourites = totalFav.innerText = '0'
-  } else {
-    totalFav.setAttribute('class', 'show')
-     numsOfFavourites = totalFav.innerText = saveFav.length
-return numsOfFavourites;
-  }
-  //console.log(saveFav.length)
-}
 
 /**
  * Creamos el template de los items a mostrar
  * @param {*} data
  */
- const printData = (data) => {
-  // Limpiamos el contenedor para poder cargar los nuevos
-  while (resultsColumnItem.hasChildNodes()) {
-      resultsColumnItem.removeChild(resultsColumnItem.lastChild);
-  }
-  // Verificamos que no esté vacío
-  if (data.length < 0) {
-      document.querySelector(".results__column--wrapper").innerHTML =
-          "No se encontraron datos";
-  } else {
-      data.forEach((property) => {
-          template.querySelector(".iconFav").dataset.id = property.id;
-          template.querySelector(".results__column--img picture img").setAttribute("src", property.image);
-          template.querySelector(".results__item--title").textContent = property.address;
-          template.querySelector(".results__item--type").innerText = `${property.type}`;
-          template.querySelector(".results__item--zone").innerText = `${property.neighborhood}`;
-          template.querySelector(".results__item--text").innerText = property.description;
-          template.querySelector(".results__item--price").innerText = `${property.money}${String(property.price).replace(/(.)(?=(\d{3})+$)/g, "$1.")}`;
-          template.querySelector(".results__column--item").setAttribute("data-id", property.id + "" + property.price);
-          const cloneTemplates = template.cloneNode(true);
+const printData = (data) => {
 
-          fragment.appendChild(cloneTemplates);
-      });
-      totalResults.innerHTML = `<p class="px-4">Se encontraron <b> ${data.length} </b> resultados </p>`;
+	// Limpiamos el contenedor para poder cargar los nuevos
+	while (resultsColumnItem.hasChildNodes()) {
+		resultsColumnItem.removeChild(resultsColumnItem.lastChild);
+	}
+	// Verificamos que no esté vacío
+	if (data.length < 0) {
+		document.querySelector(".results__column--wrapper").innerHTML =
+			"No se encontraron datos";
+	} else {
+		let template = document.querySelector("#template-results").content;
 
-      resultsColumnItem.append(fragment);
-  }
 
-  //getFavourites(data);
+		data.forEach((property) => {
+			template.querySelector(".iconFav").dataset.id = property.id;
+			template.querySelector(".results__column--img picture img").setAttribute("src", property.image);
+			template.querySelector(".results__item--title").textContent =property.address;
+			template.querySelector(".results__item--type").innerText = `${property.type}`;
+			template.querySelector(".results__item--zone").innerText = `${property.neighborhood}`;
+			template.querySelector(".results__item--text").innerText = property.description;
+			template.querySelector(".results__item--price").innerText = `${property.money}${String(property.price).replace(/(.)(?=(\d{3})+$)/g, "$1.")}`;
+			template.querySelector(".results__column--item").setAttribute("data-id", property.id + "" + property.price);
+			const cloneTemplates = template.cloneNode(true);
+
+			fragment.appendChild(cloneTemplates);
+		});
+		totalResults.innerHTML = `<p class="px-4">Se encontraron <b> ${data.length} </b> resultados </p>`;
+
+		resultsColumnItem.append(fragment);
+	}
+
+
 };
 /**
  *  Creamos las funciones de filtrado de departamentos
@@ -172,7 +118,8 @@ const showZonas = (selected) => {
 		return item.zone === selected.zone;
 	});
 	printData(getZone);
-	totalResults.innerHTML = `<p class="px-4">Se ${getZone.length <= 1 ? "encontró" : "encontraron"} <b>${getZone.length}</b>  ${getZone.length < 2 ? "resultado" : "resultados"} en <b>${selected.zone} </b></p>`;
+	totalResults.innerHTML = `<p class="px-4">Se ${
+		getZone.length <= 1 ? "encontró" : "encontraron"} <b>${getZone.length}</b>  ${getZone.length < 2 ? "resultado" : "resultados"} en <b>${selected.zone} </b></p>`;
 };
 
 // Imprimimos  por barrios
@@ -181,25 +128,29 @@ const showNeighborhood = (selected) => {
 		return item.neighborhood === selected.neighborhood;
 	});
 	printData(getZone);
-	totalResults.innerHTML = `<p class="px-4">Se ${ getZone.length <= 1 ? "encontró" : "encontraron"} <b>${getZone.length}</b>  ${getZone.length < 2 ? "resultado" : "resultados"} en <b>${selected.neighborhood} </b></p>`;
+	totalResults.innerHTML = `<p class="px-4">Se ${getZone.length <= 1 ? "encontró" : "encontraron"} <b>${getZone.length}</b>  ${getZone.length < 2 ? "resultado" : "resultados"} en <b>${selected.neighborhood} </b></p>`;
 };
 
 // Creamos los botones con las  acciones a filtrar
 
 // Filtra menor valor
 const createLessPrice = () => {
-	lessPrice.innerText = "Menor Precio";
-	lessPrice.onclick = () => {
-		showLessExpensive(data);
-	};
+  if (lessPrice) {
+    lessPrice.innerText = "Menor Precio";
+    lessPrice.onclick = () => { showLessExpensive(data); };
+  }
+	
 };
 
 // Filtra mayor valor
 const createHighPrice = () => {
-	highPrice.innerText = "Mayor Precio";
-	highPrice.onclick = () => {
-		showMoreExpensive(data);
-	};
+  if (highPrice) {
+    
+    highPrice.innerText = "Mayor Precio";
+    highPrice.onclick = () => {
+      showMoreExpensive(data);
+    };
+  }
 };
 // Muestra todo
 const createFilterAll = () => {
@@ -217,8 +168,7 @@ const selectFilterByNeighborhood = () => {
 	createSelectFilterNeighborhood();
 	filterSelect.onchange = (e) => {
 		const elementTarget = e.target.value;
-		const barrios = data.find( (barrio) => barrio.neighborhood === elementTarget
-		);
+		const barrios = data.find(({neighborhood}) => neighborhood === elementTarget);
 		showNeighborhood(barrios);
 	};
 	filters.appendChild(filterSelect);
@@ -228,7 +178,7 @@ const selectFilterByZone = () => {
 	createSelectFilterZone();
 	filterSelectZone.onchange = (e) => {
 		const elementTarget = e.target.value;
-		const zonas = data.find((zona) => zona.zone === elementTarget);
+		const zonas = data.find(({zone}) => zone === elementTarget);
 		showZonas(zonas);
 	};
 	filters.appendChild(filterSelectZone);
@@ -240,6 +190,14 @@ const selectFilterByZone = () => {
  * Crear cantidad de ambientes!!
  * @returns params
  */
+
+
+/**
+ * Imprimimos los resultados con un forEach
+ * Recibimos el parámetro data para poder hacer los filtros
+ * @param {*} data
+ */
+
 
 /**
  * Creamos el filtrado por Barrios
@@ -299,6 +257,61 @@ const getActiveClass = () => {
 	});
 };
 
+
+const createfavorites = () => {
+	const click = resultsColumnItem.addEventListener("click", (e) => {
+		e.target.classList.add("disabled");
+		e.target.setAttribute("disabled", "disabled");
+		getFavourites(e);
+		getFavoritesLength();
+	});
+	return click;
+};
+
+const getFavourites = (e) => {
+	let fav = e.target.classList.contains("iconFav");
+	if (fav) {
+		favObject(e.target.parentNode);
+	}
+	e.stopPropagation();
+};
+
+const favObject = (property) => {
+	const favouriteStorage = {
+		id: property.querySelector(".iconFav").dataset.id,
+		address: property.querySelector(".results__item--title").textContent,
+		price: property.querySelector(".results__item--price").textContent,
+	};
+
+	saveFavStorage(favouriteStorage);
+};
+
+const saveFavStorage = (favouriteStorage) => {
+	if (localStorage.getItem("favorites") === null) {
+		let saveFav = [];
+		saveFav.push(favouriteStorage);
+		localStorage.setItem("favorites", JSON.stringify(saveFav));
+	} else {
+		let saveFav = JSON.parse(localStorage.getItem("favorites"));
+		saveFav.push(favouriteStorage);
+		localStorage.setItem("favorites", JSON.stringify(saveFav));
+		getFavoritesLength();
+	}
+};
+
+const getFavoritesLength = () => {
+	let saveFav = JSON.parse(localStorage.getItem("favorites"));
+	let numsOfFavourites = "";
+	if (saveFav === null) {
+		numsOfFavourites = totalFav.innerText = "0";
+	} else {
+		totalFav.setAttribute("class", "show");
+		numsOfFavourites = totalFav.innerText = saveFav.length;
+		return numsOfFavourites;
+	}
+};
+
+
 /**
  * Elegimos el THEME  desde localStorage
  * @param {*} theme
@@ -315,25 +328,28 @@ const toggleTheme = (theme) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  getFavoritesLength();
+	getFavoritesLength();
 	const storageTheme = localStorage.getItem("theme");
-  if (localStorage.getItem("theme") === null) {
-    BODY.classList.add(`theme-light`);
-  } else {
-    BODY.classList.add(`theme-${storageTheme}`);
-  };
-	if (storageTheme === " ") switchTheme.removeAttribute("checked");
+	if (localStorage.getItem("theme") === null) {
+		BODY.classList.add(`theme-light`);
+	} else {
+		BODY.classList.add(`theme-${storageTheme}`);
+	}
+	if (storageTheme === null) switchTheme.removeAttribute("checked");
 	if (storageTheme === "dark") switchTheme.setAttribute("checked", "checked");
-	
 
 	switchTheme.onchange = () => {
 		let value;
 		if (switchTheme.checked ? (value = "dark") : (value = "light"))
-      localStorage.setItem("theme", value);
-    
+			localStorage.setItem("theme", value);
+
 		toggleTheme(value);
 	};
 });
+
+const getIndexFn = () => {
+  getFavoritesLength();
+}
 
 getActiveClass();
 createLessPrice(getResults);
