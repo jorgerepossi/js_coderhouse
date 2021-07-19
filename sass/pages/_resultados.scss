@@ -11,9 +11,12 @@ resultados
 }
 
 #filters {
-    border-bottom: 1px solid var(--color-white-20);
+    color: var(--text-color);
+    background-color: var(--absolute-color);
+    border-bottom: 1px solid rgba(50,50,50,.1);
     padding-bottom: 1rem;
     padding-top: 1rem;
+
 }
 
 .results {
@@ -44,9 +47,14 @@ resultados
         overflow: auto;
         padding: 0;
         scrollbar-width: none;
+       
 
         &::-webkit-scrollbar {
             display: none;
+        }
+        .total_results{
+            background-color: var(--absolute-color-item);
+            color: var(--text-color);
         }
 
         &--wrapper {
@@ -59,9 +67,11 @@ resultados
         }
 
         &--item {
-            border-bottom: 1px solid var(--color-white-20);
+            border-bottom: 1px solid rgba(50,50,50,.1);
             padding: 2rem;
             position: relative;
+            background-color: var(--absolute-color-item);
+            color: var(--text-color);
         }
 
         &--img {

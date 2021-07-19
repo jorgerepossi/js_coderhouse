@@ -1,5 +1,7 @@
 #footer {
-  background-color: #f7f7f7;
+  background-color: var(--absolute-color);
   display: block;
   position: relative;
+  color: var(--text-color);
+
 }
