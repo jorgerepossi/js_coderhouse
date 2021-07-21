@@ -1,204 +1,170 @@
 <!DOCTYPE html>
 <html lang="es_ES">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Alquileo | Propiedades | Alquilar nunca fue tán fácil</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/regular-straight.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+      .label {
+        color: #000;
+        background-color: #fff;
+        border-radius: 50px;
+        font-weight: 900;
+        font-size: 12px;
+        text-align: center;
+        white-space: nowrap;
+        padding: 10px
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Desafío: Simulador interactivo</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/regular-straight.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap"
-    rel="stylesheet">
+      .label.white {
+        background-color: #fff;
+        box-shadow: 0 0 15px 2px rgba(0, 0, 0, .3)
+      }
 
-  <style>
-    .label {
-      color: #000;
-      background-color: white;
-      border-radius: 50px;
-      font-weight: 900;
-      font-size: 12px;
-      text-align: center;
-      white-space: nowrap;
-      padding: 10px;
-    }
-
-    .label.white {
-      background-color: #fff;
-      box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    .label.white:hover {
-      transform: scale(2);
-      transition: all 0.3s ease-in-out;
-      background-color: black;
-    }
-  </style>
-</head>
-
-<body>
-  <header class="flex flex-wrap">
-    <section class="flex flex-wrap justify-between full-width items-center">
-      <section class="logo">
-        <a href="index.html"> Logo</a>
-      </section>
-
-      <section class="flex flex-wrap items-center">
-        <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
-        <section id="getFavorites" class="px-4">
-          <i class="fi fi-rs-heart"></i> <span class="hide"></span>
-
+      .label.white:hover {
+        transform: scale(2);
+        transition: all .3s ease-in-out;
+        background-color: #000
+      }
+    </style>
+  </head>
+  <body>
+    <header class="flex flex-wrap">
+      <section class="flex flex-wrap justify-between full-width items-center">
+        <section class="logo">
+          <a href="index.html">Logo</a>
         </section>
-        <section class="switchTheme">
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-          </label>
-        </section>
-        <section class="px-4">
-          <i class="fi fi-rs-menu-burger"></i>
+        <section class="flex flex-wrap items-center">
+          <section class="px-4">
+            <i class="fi fi-rs-user"></i>Login
+          </section>
+          <section id="getFavorites" class="px-4">
+            <i class="fi fi-rs-heart"></i>
+            <span class="hide"></span>
+          </section>
+          <section class="switchTheme">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+          </section>
+          <section class="px-4">
+            <i class="fi fi-rs-menu-burger"></i>
+          </section>
         </section>
       </section>
+    </header>
+    <section class="favorites__wrapper">
+      <div class="close">close</div>
+      <div id="favorites__wrapper--content"></div>
     </section>
-
-  </header>
-  <section class="favorites__wrapper">
-    <div class="close"> close</div>
-    <div id="favorites__wrapper--content"></div>
-  </section>
-  <main id="app" role="main" class="flex direction-column">
-    <section id="filters">
-      <section class="flex filters__container flex-wrap items-center">
-        <div class="flex  flex-wrap items-center px-4">
-          <p class=" px-2">Filtros </p><i class="fi-rs-settings-sliders"></i>
-        </div>
-        <button id="highPrice" class="button"></button>
-        <button id="lessPrice" class="button"></button>
-        <select name="zona" id="filterZone" class="button">
-          
-        </select>
-        <select name="barrio" id="filterNeighborhood" class="button">
-         
-        </select>
-
-
-
-      </section>
-    </section>
-    <section id="results" class="flex flex-wrap">
-      <div class="results__column in-md-12 in-sm-12 in-lg-6  in-xl-5  in-xs-12">
-        <div class="total_results px-4 py-4"></div>
-        <div id="results__column--wrapper" class="results__column--wrapper">
-          <div class="loader">
-            <span class="rotate"></span>
+    <main id="app" role="main" class="flex direction-column">
+      <section id="filters">
+        <section class="flex filters__container flex-wrap items-center">
+          <div class="flex flex-wrap items-center px-4">
+            <p class="px-2">Filtros</p>
+            <i class="fi-rs-settings-sliders"></i>
           </div>
-
-
-        </div>
-      </div>
-      <div id="mapa" class="in-md-12 in-sm-12 in-lg-6 in-xl-7 in-xs-12 flex justify-center items-center">
-        <div class="map__content">mapa</div>
-      </div>
-
-    </section>
-  </main>
-  <template id="template-results">
-
-    <div class="results__column--item">
-
-      <div class="flex flex-wrap items-center">
-        <button type="button" class="iconFav" data-id></button>
-
-        <div class="in-md-12 in-sm-12 in-lg-12 in-xl-6 in-xs-12">
-          <div class="results__column--img">
-            <picture>
-              <img src="assets/img/spinner.gif" alt="" class="" data-img />
-            </picture>
+          <button id="highPrice" class="button"></button>
+          <button id="lessPrice" class="button"></button>
+          <select name="zona" id="filterZone" class="button"></select>
+          <select name="barrio" id="filterNeighborhood" class="button"></select>
+        </section>
+      </section>
+      <section id="results" class="flex flex-wrap">
+        <div class="results__column in-md-12 in-sm-12 in-lg-6 in-xl-5 in-xs-12">
+          <div class="total_results px-4 py-4"></div>
+          <div id="results__column--wrapper" class="results__column--wrapper">
+            <div class="loader">
+              <span class="rotate"></span>
+            </div>
           </div>
         </div>
-        <div class="in-md-12 in-sm-12 in-xs-12 in-lg-12 in-xl-6 px-1 flex">
-          <div class="results__item flex flex-wrap">
-            <div class="flex flex-wrap justify-between full-width">
-              <div class="full-width">
-                <span class="results__item--type"></span>
-                <p class="results__item--title">Titulo</p>
-                <div class="results__items--price-wrapper flex flex-wrap justify-between">
-                  <div>
-
-                    <span class="flex">
-                      <i class="fi-rs-marker"> </i>
-                      <span class="results__item--zone"></span>
-                    </span>
-
-
-                  </div>
-                  <div class="results__item--money-item">
-                    <span class="flex">
-                      <i class="fi-rs-money"> </i>
-                      <span class="results__item--price"></span>
-                    </span>
+        <div id="mapa" class="in-md-12 in-sm-12 in-lg-6 in-xl-7 in-xs-12 flex justify-center items-center">
+          <div class="map__content">mapa</div>
+        </div>
+      </section>
+    </main>
+    <template id="template-results">
+      <div class="results__column--item">
+        <div class="flex flex-wrap items-center">
+          <button type="button" class="iconFav" data-id></button>
+          <div class="in-md-12 in-sm-12 in-lg-12 in-xl-6 in-xs-12">
+            <div class="results__column--img">
+              <picture>
+                <img src="assets/img/spinner.gif" alt="" class="" data-img>
+              </picture>
+            </div>
+          </div>
+          <div class="in-md-12 in-sm-12 in-xs-12 in-lg-12 in-xl-6 px-1 flex">
+            <div class="results__item flex flex-wrap">
+              <div class="flex flex-wrap justify-between full-width">
+                <div class="full-width">
+                  <span class="results__item--type"></span>
+                  <p class="results__item--title">Titulo</p>
+                  <div class="results__items--price-wrapper flex flex-wrap justify-between">
+                    <div>
+                      <span class="flex">
+                        <i class="fi-rs-marker"></i>
+                        <span class="results__item--zone"></span>
+                      </span>
+                    </div>
+                    <div class="results__item--money-item">
+                      <span class="flex">
+                        <i class="fi-rs-money"></i>
+                        <span class="results__item--price"></span>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="flex-grow">
-                <p class="results__item--text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-              </div>
-              <div id="results__item--buttons" class="flex justify-between full">
-                <a class="button">telefono</a>
-                <a href="#" class="button button--active">ver mas</a>
+                <div class="flex-grow">
+                  <p class="results__item--text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div id="results__item--buttons" class="flex justify-between full">
+                  <a class="button">telefono</a>
+                  <a href="#" class="button button--active " data-link="">ver propiedad</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
-    </div>
-
-  </template>
-
-
-  <template id="template-favorites">
-    <div class="flex flex-wrap justify-between py-4 mb-2">
-      <div class="favorites__image in-xs-5">
-        <img src="" alt="" title="">
+    </template>
+    <template id="template-favorites">
+      <div class="flex flex-wrap justify-between py-4 mb-2">
+        <div class="favorites__image in-xs-5">
+          <img src="" alt="" title="">
+        </div>
+        <div class="in-xs-7">
+          <div class="favorites__name"></div>
+          <div class="favorites__price"></div>
+        </div>
       </div>
-      <div class="in-xs-7">
-        <div class="favorites__name"></div>
-        <div class="favorites__price"></div>
+    </template>
+    <div id="llamada"></div>
+    <footer id="footer" class="py-8 full-width">
+      <div class="container mx-auto px-4">
+        <section class="flex flex-wrap">menu footer</section>
+        <section class="flex flex-wrap justify-between">
+          <p>&copy; 2021 Alquileo - <a href="#">Privacidad</a>
+            <a href="#">Términos</a>
+            <a href="#">Mapa del sitio</a>
+          </p>
+          <p>Hecho con <i class="fi fi-rs-heart"></i>por Jo Repossi </p>
+        </section>
       </div>
-    </div>
-
-  </template>
-
-<div id="llamada"></div>
-  <footer id="footer" class=" py-8 full-width">
-    <div class="container mx-auto px-4">
-      <section class="flex flex-wrap">menu footer</section>
-      <section class="flex flex-wrap justify-between">
-        <p>
-          &copy; 2021 Alquileo - <a href="#">Privacidad</a>
-          <a href="#"> Términos</a> <a href="#">Mapa del sitio</a>
-        </p>
-        <p>Hecho con <i class="fi fi-rs-heart"></i> por Jo Repossi</p>
-      </section>
-    </div>
-  </footer>
-
-
-  <script crossorigin type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
-  <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
-
-  <script src="js/points.js"></script>
-
-  <script src="js/app.js"></script>
-  <script>
-    getResults();
-    createfavorites();
-  </script>
-</body>
-
+    </footer>
+    <script crossorigin type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script async defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
+    <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
+    <script src="js/points.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      getResults(), createfavorites()
+    </script>
+  </body>
 </html>

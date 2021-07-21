@@ -29,17 +29,7 @@ var saveFav = JSON.parse(localStorage.getItem("favorites"));
 var getFav = localStorage.getItem("favorites");
 
 class Propertie {
-	constructor(
-		id,
-		address,
-		area,
-		bedrooms,
-		description,
-		image,
-		currency,
-		city,
-		price,
-		type
+	constructor( id, address, area, bedrooms, description, image, currency, city, price, type
 	) {
 		this.id = id;
 		this.address = address;
@@ -60,24 +50,18 @@ class Propertie {
 	}
 	// Imprimimos  los mayores precios
 	showMoreExpensive() {
-		data.sort((a, b) => {
-			return b.price - a.price;
-		});
+		data.sort((a, b) => { return b.price - a.price; });
 		printData(data);
 	}
 	//Imprimimos los menores precios
 	showLessExpensive() {
-		data.sort((a, b) => {
-			return a.price - b.price;
-		});
+		data.sort((a, b) => { return a.price - b.price; });
 		properties.getTotalResults(data, "Total");
 		printData(data);
 	}
 	// Imprimimos  todos los  precios
 	showAll() {
-		data.sort((a, b) => {
-			return a.id - b.id;
-		});
+		data.sort((a, b) => { return a.id - b.id; });
 		properties.getTotalResults(data, "Total");
 		printData(data);
 	}
@@ -87,11 +71,26 @@ class Propertie {
 		filter.sort((a, b) => a.address.city.localeCompare(b.address.city));
 		return filter;
 	}
+
+	// Imprimimos  por barrios
+showCity  (selected)  {
+	const get = dataFilter(data, selected.address.location, selected.address.location);
+	properties.getTotalResults(get, selected.address.location);
+	printData(get);
+};
+	
+	
+
+// Imprimimos  por zona
+ showZonas  (selected) {
+	const get = dataFilter(data, selected.address.city, selected.address.city);
+	properties.getTotalResults(get, selected.address.city);
+	createSelectFilterCity(properties.filterByCity(get));
+	printData(get);
+};
+	
 	resetContent(reset) {
-		if (reset)
-			while (reset.hasChildNodes()) {
-				reset.removeChild(reset.lastChild);
-			}
+		if (reset) while (reset.hasChildNodes()) { reset.removeChild(reset.lastChild); }
 	}
 
 	returnBeds(data) {
@@ -105,7 +104,7 @@ class Propertie {
 	}
 }
 
-// create a call function () {}
+
 
 const properties = new Propertie();
 const prop = properties.getDataInfo();
@@ -136,37 +135,16 @@ const getResults = async () => {
  */
 
 const dataFilter = (data, index, select) => {
-	let getArea = data.filter(
-		({ address }) => address.location === select || address.city === select
-	);
-	console.log(getArea);
+	let getArea = data.filter( ({ address }) => address.location === select || address.city === select);
 	return getArea;
 };
 
-// Imprimimos  por barrios
-const showCity = (selected) => {
-	const get = dataFilter(
-		data,
-		selected.address.location,
-		selected.address.location
-	);
-	properties.getTotalResults(get, selected.address.location);
-	printData(get);
-};
 
-// Imprimimos  por zona
-const showZonas = (selected) => {
-	const get = dataFilter(data, selected.address.city, selected.address.city);
-	properties.getTotalResults(get, selected.address.city);
-	createSelectFilterCity(properties.filterByCity(get));
-	printData(get);
-};
 
 const printData = (data) => {
 	// Verificamos que no esté vacío
 	if (data.length < 0) {
-		document.querySelector(".results__column--wrapper").innerHTML =
-			"No se encontraron datos";
+		document.querySelector(".results__column--wrapper").innerHTML = "No se encontraron datos";
 	} else {
 		// Limpiamos el contenedor para poder cargar los nuevos
 		properties.resetContent(resultsColumnItem);
@@ -192,9 +170,7 @@ const printData = (data) => {
 				template.querySelector(".results__item--zone").innerText = address.location;
 				template.querySelector(".results__item--text").innerText = description;
 				template.querySelector(".results__item--price").innerText = `${currency}${String(price).replace(/(.)(?=(\d{3})+$)/g,"$1.")}`;
-				template
-					.querySelector(".results__column--item")
-					.setAttribute("data-id", id + "" + price);
+				template.querySelector(".results__column--item").setAttribute("data-id", id + "" + price);
 				const cloneTemplates = template.cloneNode(true);
 				fragment.appendChild(cloneTemplates);
 			}
@@ -238,14 +214,13 @@ const createFilterAll = () => {
 /**
  * Crea el filtro de barrios
  */
+
+//create filter city
 const selectFilterByCity = (data) => {
 	filterSelect.onchange = (e) => {
 		const elementTarget = e.target.value;
-		const barrios = data.find(
-			({ address }) => address.location === elementTarget
-		);
-		//console.log(elementTarget )
-		showCity(barrios);
+		const barrios = data.find(({ address }) => address.location === elementTarget);
+		properties.showCity(barrios);
 	};
 	filters.appendChild(filterSelect);
 };
@@ -255,7 +230,7 @@ const selectFilterByZone = (data) => {
 	filterSelectZone.onchange = (e) => {
 		const elementTarget = e.target.value;
 		const zonas = data.find(({ address }) => address.city === elementTarget);
-		showZonas(zonas);
+		properties.showZonas(zonas);
 	};
 
 	filters.appendChild(filterSelectZone);
@@ -284,11 +259,7 @@ const createSelectFilterCity = (search) => {
 		(map, obj) => map.set(obj.address.location, obj),
 		new Map()
 	);
-	filterNeighborhood.innerHTML = ` <option value="Filtrar por Barrios" selected disabled>Filtrar por  ${
-		search[0].address.city == "Capital"
-			? "Barrios"
-			: "Partidos / Localidades / Barrios"
-	} </option>`;
+	filterNeighborhood.innerHTML = ` <option value="Filtrar por Barrios" selected disabled>Filtrar por ${search[0].address.city == "Capital" ? "Barrios" : "Partidos / Localidades / Barrios"} </option>`;
 
 	const options = reduce.forEach(({ address }) => {
 		const elementOption = document.createElement("option");
@@ -311,8 +282,7 @@ const createSelectFilterZone = () => {
 		(map, obj) => map.set(obj.address.city, obj),
 		new Map()
 	);
-	filterZone.innerHTML =
-		'<option value="Filtrar por Zona" selected disabled>Filtrar por Zona</option>';
+	filterZone.innerHTML = '<option value="Filtrar por Zona" selected disabled>Filtrar por Zona</option>';
 	const options = reduce.forEach(({ address }) => {
 		const elementOption = document.createElement("option");
 		elementOption.setAttribute("data-city", address.city);
@@ -452,12 +422,8 @@ const printFavorite = () => {
 	favoritesItems.forEach(({ address, price, image }) => {
 		properties.resetContent(favoritesWrapper);
 		template.querySelector(".favorites__image img").setAttribute("src", image);
-		template
-			.querySelector(".favorites__image img")
-			.setAttribute("alt", address);
-		template
-			.querySelector(".favorites__image img")
-			.setAttribute("title", address);
+		template.querySelector(".favorites__image img").setAttribute("alt", address);
+		template.querySelector(".favorites__image img").setAttribute("title", address);
 		template.querySelector(".favorites__name").innerHTML = address;
 		template.querySelector(".favorites__price").innerHTML = price;
 
