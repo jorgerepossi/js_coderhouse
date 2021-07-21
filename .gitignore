@@ -2,4 +2,7 @@ node_modules
 node_modules
 package-lock.json
 .husky/
+zip/
+zip
 read.md
+.gitignore

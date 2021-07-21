@@ -1560,6 +1560,20 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.info {
+  padding: 1.1618rem;
+  margin: 1.1618rem;
+}
+
+.info-alert {
+  background-color: #edd626;
+}
+
+.info-danger {
+  background-color: #ed2626;
+  color: white;
+}
+
 @media only screen and (min-width: 0) {
   .in-xs-1 {
     -webkit-box-flex: 0;
