@@ -33,7 +33,6 @@
       transition: all 0.3s ease-in-out;
       background-color: black;
     }
-
   </style>
 </head>
 
@@ -46,7 +45,10 @@
 
       <section class="flex flex-wrap items-center">
         <section class="px-4"><i class="fi fi-rs-user"></i> Login</section>
-        <section id="getFavorites" class="px-4"><i class="fi fi-rs-heart"></i> <span class="hide"></span></section>
+        <section id="getFavorites" class="px-4">
+          <i class="fi fi-rs-heart"></i> <span class="hide"></span>
+
+        </section>
         <section class="switchTheme">
           <label class="switch">
             <input type="checkbox">
@@ -58,8 +60,12 @@
         </section>
       </section>
     </section>
-  </header>
 
+  </header>
+  <section class="favorites__wrapper">
+    <div class="close"> close</div>
+    <div id="favorites__wrapper--content"></div>
+  </section>
   <main id="app" role="main" class="flex direction-column">
     <section id="filters">
       <section class="flex filters__container flex-wrap items-center">
@@ -69,10 +75,10 @@
         <button id="highPrice" class="button"></button>
         <button id="lessPrice" class="button"></button>
         <select name="zona" id="filterZone" class="button">
-          <option value="Filtrar por Zona" selected disabled>Filtrar por Zona</option>
+          
         </select>
         <select name="barrio" id="filterNeighborhood" class="button">
-          <option value="Filtrar por Barrios" selected disabled>Filtrar por Barrios</option>
+         
         </select>
 
 
@@ -95,65 +101,80 @@
       </div>
 
     </section>
-    <template id="template-results">
+  </main>
+  <template id="template-results">
 
-      <div class="results__column--item">
+    <div class="results__column--item">
 
-        <div class="flex flex-wrap items-center">
-          <button type="button" class="iconFav" data-id></button>
+      <div class="flex flex-wrap items-center">
+        <button type="button" class="iconFav" data-id></button>
 
-          <div class="in-md-12 in-sm-12 in-lg-12 in-xl-6 in-xs-12">
-            <div class="results__column--img">
-              <picture>
-                <img src="assets/img/spinner.gif" alt="" class="" data-img />
-              </picture>
-            </div>
+        <div class="in-md-12 in-sm-12 in-lg-12 in-xl-6 in-xs-12">
+          <div class="results__column--img">
+            <picture>
+              <img src="assets/img/spinner.gif" alt="" class="" data-img />
+            </picture>
           </div>
-          <div class="in-md-12 in-sm-12 in-xs-12 in-lg-12 in-xl-6 px-1 flex">
-            <div class="results__item flex flex-wrap">
-              <div class="flex flex-wrap justify-between full-width">
-                <div class="full-width">
-                  <span class="results__item--type"></span>
-                  <p class="results__item--title">Titulo</p>
-                  <div class="results__items--price-wrapper flex flex-wrap justify-between">
-                    <div>
+        </div>
+        <div class="in-md-12 in-sm-12 in-xs-12 in-lg-12 in-xl-6 px-1 flex">
+          <div class="results__item flex flex-wrap">
+            <div class="flex flex-wrap justify-between full-width">
+              <div class="full-width">
+                <span class="results__item--type"></span>
+                <p class="results__item--title">Titulo</p>
+                <div class="results__items--price-wrapper flex flex-wrap justify-between">
+                  <div>
 
-                      <span class="flex">
-                        <i class="fi-rs-marker"> </i>
-                        <span class="results__item--zone"></span>
-                      </span>
+                    <span class="flex">
+                      <i class="fi-rs-marker"> </i>
+                      <span class="results__item--zone"></span>
+                    </span>
 
 
-                    </div>
-                    <div class="results__item--money-item">
-                      <span class="flex">
-                        <i class="fi-rs-money"> </i>
-                        <span class="results__item--price"></span>
-                      </span>
-                    </div>
+                  </div>
+                  <div class="results__item--money-item">
+                    <span class="flex">
+                      <i class="fi-rs-money"> </i>
+                      <span class="results__item--price"></span>
+                    </span>
                   </div>
                 </div>
-                <div class="flex-grow">
-                  <p class="results__item--text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                </div>
-                <div id="results__item--buttons" class="flex justify-between full">
-                  <a class="button">telefono</a>
-                  <a href="#" class="button button--active">ver mas</a>
-                </div>
+              </div>
+              <div class="flex-grow">
+                <p class="results__item--text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div id="results__item--buttons" class="flex justify-between full">
+                <a class="button">telefono</a>
+                <a href="#" class="button button--active">ver mas</a>
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
 
-    </template>
-  </main>
+    </div>
 
-  <footer id="footer" class="my-8 py-8 full-width">
+  </template>
+
+
+  <template id="template-favorites">
+    <div class="flex flex-wrap justify-between py-4 mb-2">
+      <div class="favorites__image in-xs-5">
+        <img src="" alt="" title="">
+      </div>
+      <div class="in-xs-7">
+        <div class="favorites__name"></div>
+        <div class="favorites__price"></div>
+      </div>
+    </div>
+
+  </template>
+
+<div id="llamada"></div>
+  <footer id="footer" class=" py-8 full-width">
     <div class="container mx-auto px-4">
       <section class="flex flex-wrap">menu footer</section>
       <section class="flex flex-wrap justify-between">
@@ -165,15 +186,16 @@
       </section>
     </div>
   </footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
+
+
+  <script crossorigin type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&callback=initMap"></script>
   <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
 
   <script src="js/points.js"></script>
 
   <script src="js/app.js"></script>
-  <script type="text/javascript">
+  <script>
     getResults();
     createfavorites();
   </script>

@@ -1,7 +1,7 @@
 .button {
   appearance: none;
   background-color: transparent;
-  border: 1px solid rgb(221, 221, 221);
+  border: 1px solid var(--text-color);
   border-radius: 50px;
   cursor: pointer;
   font-size: 0.8rem;
@@ -10,14 +10,15 @@
   line-height: 1rem;
   text-transform: capitalize;
   outline: none;
+  color: var(--text-color);
   &--active {
-    background-color: var(--color-black-10);
-    color: white;
+    background-color: var(--text-color);
+    color: var(--absolute-color);
   }
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background-color: var(--color-black-10);
-    color: white;
+    background-color: var(--text-color);
+    color: var(--absolute-color);
   }
 }

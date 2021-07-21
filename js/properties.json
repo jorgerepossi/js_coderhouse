@@ -1,146 +1,184 @@
 [
-	{
-		"id": 0,
-		"address": "Paraguay 4100",
-		"area": "Capital",
-		"beds": "",
-		"city": "Recoleta",
+    {
+        "id": 0,
+        "address": {
+            "city": "Capital",
+            "location": "Recoleta",
+            "streetAddress": "Paraguay 4.100"
+        },
+        "bedrooms": 3,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-0.jpg",
+        "currency": "$ ",
+        "price": 35000,
+        "type": "departamento"
+    },
+    {
+        "id": 1,
+        "address": {
+            "city": "Capital",
+            "location": "Palermo",
+            "streetAddress": "Av. del Libertador 3.600"
+        },
+        "bedrooms": 2,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 42500,
+        "type": "departamento"
+    },
+    {
+        "id": 2,
+        "address": {
+            "city": "Capital",
+            "location": "Boedo",
+            "streetAddress": "Av. Belgrano 3245"
+        },
+        "bedrooms": 3,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-2.jpg",
+        "currency": "$ ",
+        "price": 25000,
+        "type": "departamento"
+    },
+    {
+        "id": 3,
+        "address": {
+            "city": "Capital",
+            "location": "Palermo",
+            "streetAddress": "Beruti 4.500"
+        },
+        "bedrooms": 1,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-0.jpg",
+        "currency": "$ ",
+        "price": 23000,
+        "type": "departamento"
+    },
+    {
+        "id": 4,
+        "address": {
+            "city": "Capital",
+            "location": "Caballito",
+            "streetAddress": "Av. José María Moreno 1.445"
+        },
+        "bedrooms": 3,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 15000,
+        "type": "departamento"
+    },
+    {
+        "id": 5,
+        "address": {
+            "city": "Capital",
+            "location": "Barrio Norte",
+            "streetAddress": "Austria 1.900"
+        },
+        "bedrooms": 2,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "https://imgar.zonapropcdn.com/avisos/1/00/48/00/83/88/360x266/1769425482.jpg",
+        "currency": "$ ",
+        "price": 38700,
+        "type": "departamento"
+    },
+    {
+        "id": 6, 
+		"address": {
+            "city": "Capital",
+            "location": "Barrio Parque",
+            "streetAddress": "Av. Pres. Figueroa Alcorta 3.548"
+        },
+        "bedrooms": 3,
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 90000,
+        "type": "casa"
+    },
+    {
+        "id": 7,
+		"address": {
+            "city": "GBA Zona Norte",
+            "location": "Olivos",
+            "streetAddress": "Av. Santa Fe 745"
+        }, 
+        "bedrooms": 3, 
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-2.jpg",
+        "currency": "$ ",
+        "price": 12000,
+        "type": "departamento"
+    },
+    {
+        "id": 8,
+		"address": {
+            "city": "GBA Zona Norte",
+            "location": "San Fernando",
+            "streetAddress": "Constitución 340"
+        },
+        "bedrooms": 2, 
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 25000,
+        "type": "casa"
+    },
+    {
+        "id": 9,
+		"address": {
+            "city": "GBA Zona Norte",
+            "location": "San Isidro",
+            "streetAddress": "Av. Centenario 1.572"
+        }, 
+        "bedrooms": 3, 
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-0.jpg",
+        "currency": "$ ",
+        "price": 25000,
+        "type": "departamento"
+    },
+    {
+        "id": 10,
+		"address": {
+            "city": "GBA Zona Norte",
+            "location": "Beccar",
+            "streetAddress": "Av. Centenario 3.272"
+        }, 
+        "bedrooms": 2, 
 		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-0.jpg",
-		"money": "$",
-		"price": 35000,
-		"type": "departamento"
-	},
-	{
-		"id": 1,
-		"address": "Av. del Libertador 3600",
-		"area": "Capital",
-		"beds": "",
-		"city": "Palermo",
+        "image": "/assets/img/properties/property-2.jpg",
+        "currency": "$ ",
+        "price": 25000,
+        "type": "departamento"
+    },
+    {
+        "id": 11,
+		"address": {
+            "city": "GBA Zona Zur",
+            "location": "Avellaneda",
+            "streetAddress": "Av. Mitre 2.020"
+        }, 
+        "bedrooms": 3, 
+        "description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-0.jpg",
+        "currency": "$ ",
+        "price": 22000,
+        "type": "departamento"
+    },
+    {
+        "id": 12,
+		"address": {
+            "city": "GBA Zona Oeste ",
+            "location": "Morón",
+            "streetAddress": "Manuel De Sarratea 70"
+        }, 
+        "bedrooms": 4, 
 		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-1.jpg",
-		"money": "$",
-		"price": 42500,
-		"type": "departamento"
-	},
-	{
-		"id": 2,
-		"address": "Av. Belgrano 3245",
-		"area": "Capital",
-		"beds": "",
-		"city": "Boedo",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-2.jpg",
-		"money": "$",
-		"price": 25000,
-		"type": "departamento"
-	},
-	{
-		"id": 3,
-		"address": "Beruti 4500",
-		"area": "Capital",
-		"beds": "",
-		"city": "Palermo",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-0.jpg",
-		"money": "$",
-		"price": 23000,
-		"type": "departamento"
-	},
-	{
-		"id": 4,
-		"address": "Av. José María Moreno 1445",
-		"area": "Capital",
-		"beds": "",
-		"city": "Caballito",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-1.jpg",
-		"money": "$",
-		"price": 15000,
-		"type": "departamento"
-	},
-	{
-		"id": 5,
-		"address": "Austria 1900",
-		"area": "Capital",
-		"beds": "",
-		"city": "Barrio Norte",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "https://imgar.zonapropcdn.com/avisos/1/00/48/00/83/88/360x266/1769425482.jpg",
-		"money": "$",
-		"price": 38700,
-		"type": "departamento"
-	},
-	{
-		"id": 6,
-		"address": "Av. Pres. Figueroa Alcorta 3548",
-		"area": "Capital",
-		"beds": "",
-		"city": "Barrio Parque",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-1.jpg",
-		"money": "$",
-		"price": 90000,
-		"type": "casa"
-	},
-	{
-		"id": 7,
-		"address": "Av. Santa Fe 745",
-		"area": "Zona Norte",
-		"beds": "",
-		"city": "Olivos",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-2.jpg",
-		"money": "$",
-		"price": 12000,
-		"type": "departamento"
-	},
-	{
-		"id": 8,
-		"address": "Constitución 340",
-		"area": "Zona Norte",
-		"beds": "",
-		"city": "San fernando",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-1.jpg",
-		"money": "$",
-		"price": 25000,
-		"type": "casa"
-	},
-	{
-		"id": 9,
-		"address": "Av. Centenario 1572",
-		"area": "Zona Norte",
-		"beds": "",
-		"city": "San Isidro",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-0.jpg",
-		"money": "$",
-		"price": 25000,
-		"type": "departamento"
-	},
-	{
-		"id": 10,
-		"address": "Av. Centenario 3200",
-		"area": "Zona Norte",
-		"beds": "",
-		"city": "Beccar",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-2.jpg",
-		"money": "$",
-		"price": 25000,
-		"type": "departamento"
-	},
-	{
-		"id": 11,
-		"address": "Av. Mitre 2000",
-		"area": "Zona Sur",
-		"beds": "",
-		"city": "Avellaneda",
-		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
-		"image": "/assets/img/properties/property-0.jpg",
-		"money": "$",
-		"price": 22000,
-		"type": "departamento"
-	}
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 17000,
+        "type": "departamento"
+    }
 ]

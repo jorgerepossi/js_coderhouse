@@ -5,64 +5,7 @@
 ::after {
   box-sizing: border-box;
 }
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-del,
-dfn,
-em,
-font,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend {
+html,body,div,span,applet,object,iframe,table,caption,tbody,tfoot,thead,tr,th,td,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,dl,dt,dd,ol,ul,li,fieldset,form,label,legend {
   margin: 0;
   border: 0;
   outline: 0;
@@ -77,6 +20,7 @@ legend {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   text-decoration: none !important;
+ 
 }
 
 a,
@@ -96,6 +40,7 @@ p {
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+
 }
 
 article,
@@ -109,4 +54,15 @@ main,
 nav,
 section {
   display: block;
+}
+
+
+p, span {
+  transition: background-color .2s ease-in-out;
+}
+section, div{
+
+ 
+  transition: background-color .2s ease-in-out;
+
 }
