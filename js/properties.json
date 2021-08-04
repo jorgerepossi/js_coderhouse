@@ -180,5 +180,19 @@
         "currency": "$ ",
         "price": 17000,
         "type": "departamento"
+    }, 
+    {
+        "id": 13,
+		"address": {
+            "city": "GBA Zona Zur",
+            "location": "La Plata",
+            "streetAddress": "Av. 60 N°514"
+        }, 
+        "bedrooms": 2, 
+		"description": "Alquiler Hermoso 2 Amb en Palermo Soho. en Torre de Categoría - Seguridad 24 Hs y Amenities!",
+        "image": "/assets/img/properties/property-1.jpg",
+        "currency": "$ ",
+        "price": 22000,
+        "type": "departamento"
     }
 ]

@@ -9,7 +9,7 @@
  */
 
 const BODY = document.body;
-const url = "js/properties.json";
+var url = "js/properties.json";
 let data = [];
 let switchTheme = document.querySelector('input[type="checkbox"]');
 let filters = document.querySelector(".filters__container");
@@ -29,7 +29,7 @@ var saveFav = JSON.parse(localStorage.getItem("favorites"));
 var getFav = localStorage.getItem("favorites");
 
 class Propertie {
-	constructor( id, address, area, bedrooms, description, image, currency, city, price, type
+	constructor(id, address, area, bedrooms, description, image, currency, city, price, type
 	) {
 		this.id = id;
 		this.address = address;
@@ -49,18 +49,18 @@ class Propertie {
 		return data;
 	}
 	// Imprimimos  los mayores precios
-	showMoreExpensive() {
+	doMoreExpensive() {
 		data.sort((a, b) => { return b.price - a.price; });
 		printData(data);
 	}
 	//Imprimimos los menores precios
-	showLessExpensive() {
+	doLessExpensive() {
 		data.sort((a, b) => { return a.price - b.price; });
 		properties.getTotalResults(data, "Total");
 		printData(data);
 	}
 	// Imprimimos  todos los  precios
-	showAll() {
+	doAll() {
 		data.sort((a, b) => { return a.id - b.id; });
 		properties.getTotalResults(data, "Total");
 		printData(data);
@@ -73,22 +73,22 @@ class Propertie {
 	}
 
 	// Imprimimos  por barrios
-showCity  (selected)  {
-	const get = dataFilter(data, selected.address.location, selected.address.location);
-	properties.getTotalResults(get, selected.address.location);
-	printData(get);
-};
-	
-	
+	showCity(selected) {
+		const get = dataFilter(data, selected.address.location, selected.address.location);
+		properties.getTotalResults(get, selected.address.location);
+		printData(get);
+	};
 
-// Imprimimos  por zona
- showZonas  (selected) {
-	const get = dataFilter(data, selected.address.city, selected.address.city);
-	properties.getTotalResults(get, selected.address.city);
-	createSelectFilterCity(properties.filterByCity(get));
-	printData(get);
-};
-	
+
+
+	// Imprimimos  por zona
+	showZonas(selected) {
+		const get = dataFilter(data, selected.address.city, selected.address.city);
+		properties.getTotalResults(get, selected.address.city);
+		createSelectFilterCity(properties.filterByCity(get));
+		printData(get);
+	};
+
 	resetContent(reset) {
 		if (reset) while (reset.hasChildNodes()) { reset.removeChild(reset.lastChild); }
 	}
@@ -99,7 +99,7 @@ showCity  (selected)  {
 	}
 
 	getTotalResults(total, select) {
-		const getTotal = (totalResults.innerHTML = `<p class="px-4">Se ${ total.length == 1 ? "encontró" : "encontraron"} <b>${total.length}</b>  ${total.length < 2 ? "resultado" : "resultados" } en <b>${select} </b></p>`);
+		const getTotal = (totalResults.innerHTML = `<p class="px-4">Se ${total.length == 1 ? "encontró" : "encontraron"} <b>${total.length}</b>  ${total.length < 2 ? "resultado" : "resultados"} en <b>${select} </b></p>`);
 		return getTotal;
 	}
 }
@@ -123,8 +123,9 @@ const getResults = async () => {
 		createSelectFilterCity(await prop);
 		properties.getTotalResults(data, "total");
 	} catch (err) {
-		resultsColumnItem.innerHTML =
-			"<div class='flex items-center content-center justify-center info info-danger'> <span> <i class='fi fi-rr-exclamation'></i></span> Ha ocurrido un error </div>";
+		if (resultsColumnItem)
+			resultsColumnItem.innerHTML =
+				"<div class='flex items-center content-center justify-center info info-danger'> <span> <i class='fi fi-rr-exclamation'></i></span> Ha ocurrido un error </div>";
 		console.log(err);
 	}
 };
@@ -135,7 +136,7 @@ const getResults = async () => {
  */
 
 const dataFilter = (data, index, select) => {
-	let getArea = data.filter( ({ address }) => address.location === select || address.city === select);
+	let getArea = data.filter(({ address }) => address.location === select || address.city === select);
 	return getArea;
 };
 
@@ -151,29 +152,29 @@ const printData = (data) => {
 		let template = document.querySelector("#template-results").content;
 		let favo = JSON.parse(localStorage.getItem("favorites")) || [];
 
-		data.forEach(({ id, address, type, currency, description, image, price, bedrooms}) => {
-				
-				let dataId = id;
+		data.forEach(({ id, address, type, currency, description, image, price, bedrooms }) => {
 
-				let isFav = favo.find((el) => el.id == dataId);
-				if (isFav) {
-					template.querySelector(".iconFav").classList.add("disabled");
-					template.querySelector(".iconFav").dataset.id = id;
-				} else {
-					template.querySelector(".iconFav").dataset.id = id;
-					template.querySelector(".iconFav").classList.remove("disabled");
-				}
+			let dataId = id;
 
-				template.querySelector(".results__column--img picture img").setAttribute("src", image);
-				template.querySelector(".results__item--title").textContent = address.streetAddress;
-				template.querySelector(".results__item--type").innerText = `${type} ${properties.returnBeds(bedrooms)}`;
-				template.querySelector(".results__item--zone").innerText = address.location;
-				template.querySelector(".results__item--text").innerText = description;
-				template.querySelector(".results__item--price").innerText = `${currency}${String(price).replace(/(.)(?=(\d{3})+$)/g,"$1.")}`;
-				template.querySelector(".results__column--item").setAttribute("data-id", id + "" + price);
-				const cloneTemplates = template.cloneNode(true);
-				fragment.appendChild(cloneTemplates);
+			let isFav = favo.find((el) => el.id == dataId);
+			if (isFav) {
+				template.querySelector(".iconFav").classList.add("disabled");
+				template.querySelector(".iconFav").dataset.id = id;
+			} else {
+				template.querySelector(".iconFav").dataset.id = id;
+				template.querySelector(".iconFav").classList.remove("disabled");
 			}
+
+			template.querySelector(".results__column--img picture img").setAttribute("src", image);
+			template.querySelector(".results__item--title").textContent = address.streetAddress;
+			template.querySelector(".results__item--type").innerText = `${type} ${properties.returnBeds(bedrooms)}`;
+			template.querySelector(".results__item--zone").innerText = address.location;
+			template.querySelector(".results__item--text").innerText = description;
+			template.querySelector(".results__item--price").innerText = `${currency}${String(price).replace(/(.)(?=(\d{3})+$)/g, "$1.")}`;
+			template.querySelector(".results__column--item").setAttribute("data-id", id + "" + price);
+			const cloneTemplates = template.cloneNode(true);
+			fragment.appendChild(cloneTemplates);
+		}
 		);
 
 		resultsColumnItem.append(fragment);
@@ -185,7 +186,7 @@ const printData = (data) => {
 const createLessPrice = () => {
 	if (lessPrice) {
 		lessPrice.innerText = "Menor Precio";
-		lessPrice.onclick = () => properties.showLessExpensive();
+		lessPrice.onclick = () => properties.doLessExpensive();
 	}
 };
 
@@ -193,7 +194,7 @@ const createLessPrice = () => {
 const createHighPrice = () => {
 	if (highPrice) {
 		highPrice.innerText = "Mayor Precio";
-		highPrice.onclick = () => properties.showMoreExpensive();
+		highPrice.onclick = () => properties.doMoreExpensive();
 	}
 };
 
@@ -205,7 +206,7 @@ const createFilterAll = () => {
 		properties.resetContent(filterSelectZone);
 		createSelectFilterCity(data);
 		createSelectFilterZone(data);
-		properties.showAll();
+		properties.doAll();
 	};
 
 	filters.appendChild(buttonCreated);
@@ -247,9 +248,6 @@ const selectFilterByZone = (data) => {
  * Imprimimos los resultados con un forEach
  * Recibimos el parámetro data para poder hacer los filtros
  * @param {*} data
- */
-
-/**
  * Creamos el filtrado por Barrios
  * @returns Array[]
  */
@@ -333,7 +331,7 @@ const createfavorites = () => {
  */
 
 // deleteFavorites
-const deleteFavorites = () => {};
+const deleteFavorites = () => { };
 
 const favObject = (property) => {
 	const favouriteStorage = {
@@ -417,49 +415,116 @@ const getIndexFn = () => {
 
 const printFavorite = () => {
 	let template = document.querySelector("#template-favorites").content;
+	 
 	let favoritesItems = JSON.parse(localStorage.getItem("favorites"));
+	if(favoritesItems != null)
+		favoritesItems.forEach(({ address, price, image }) => {
+			properties.resetContent(favoritesWrapper);
+			template.querySelector(".favorites__image img").setAttribute("src", image);
+			template.querySelector(".favorites__image img").setAttribute("alt", address);
+			template.querySelector(".favorites__image img").setAttribute("title", address);
+			template.querySelector(".favorites__name").innerHTML = address;
+			template.querySelector(".favorites__price").innerHTML = price;
 
-	favoritesItems.forEach(({ address, price, image }) => {
-		properties.resetContent(favoritesWrapper);
-		template.querySelector(".favorites__image img").setAttribute("src", image);
-		template.querySelector(".favorites__image img").setAttribute("alt", address);
-		template.querySelector(".favorites__image img").setAttribute("title", address);
-		template.querySelector(".favorites__name").innerHTML = address;
-		template.querySelector(".favorites__price").innerHTML = price;
-
-		const cloneTemplatesFav = template.cloneNode(true);
-		fragment.appendChild(cloneTemplatesFav);
-	});
-	favoritesWrapper.append(fragment);
+			const cloneTemplatesFav = template.cloneNode(true);
+			fragment.appendChild(cloneTemplatesFav);
+		});
+		favoritesWrapper.append(fragment);
+ 
 };
+
+
+
 
 getActiveClass();
 createLessPrice(getResults);
 createHighPrice(getResults);
 
-$(document).ready(function () {
-	const getFavoritesContent = () => {
-		$(".favorites__wrapper").css(
-			{
-				transform: "translateX(0%)",
-				transition: "all .5s cubic-bezier(1,0,0,1)",
+
+$(window).on('load', function () {
+
+ 
+
+		$.ajax({
+			type: "GET",
+			url: url,
+			data: data,
+			dataType: "json",
+			beforeSend: function () {
+				$('.loading').html('loading...');
 			},
-			"slow"
-		);
+			success: function (data) {
+				createIndexBoxes(data);
+				$('.loading').hide();
+			}
+		});
+ 
+
+	const getFavoritesContent = () => {
+		if(getFavoritesLength() != null)
+		$(".favorites__wrapper").css(
+			{ transform: "translateX(0%)", transition: "all .5s cubic-bezier(1,0,0,1)",
+			}, "slow");
 	};
 	const closeFavorites = () => {
 		$(".favorites__wrapper").css(
 			{
-				transform: "translateX(100%)",
-				transition: "all .5s cubic-bezier(1,0,0,1)",
-			},
-			"slow"
-		);
+				transform: "translateX(100%)", transition: "all .5s cubic-bezier(1,0,0,1)",
+			}, "slow");
 	};
 
 	$("#getFavorites").click(() => {
 		$("#favorites__wrapper--content").html(printFavorite);
 		getFavoritesContent();
+		 
 	});
 	$(".close").click(closeFavorites);
+
+	const createIndexBoxes = (data) => {
+		let reduce = data.reduce(
+			(map, obj) => map.set(obj.address.city, obj),
+			new Map()
+		);
+
+		let items = reduce.forEach(({ address, image }) => {
+			let city = address.city;
+			$('.list__places').append(getresultIndex(city, image, city));
+		});
+		return items;
+	}
+
+	const getTotalResults = (select) => {
+		const gt = data.filter((item) => item.address.city == select)
+		const getTotal = `<p class="py-4">Ver ${gt.length == 1 ? "el" : "los"} <b>${gt.length}</b>  ${gt.length < 2 ? "resultado" : "resultados"}</p>`;
+		return getTotal;
+	}
+
+
+	const getresultIndex = (city, image) => {
+		const create = `
+			<div class="list__places--item">
+			<a href="resultados.html">
+			<div class="list__item">
+			<div class="list__places--item--picture">
+			<img src="${image}" class="" />
+			</div>
+			<p class="pb-4">Resultados en ${city} </p>
+			<div class="list__places--item--text"> ${getTotalResults(city)}</div>
+			</div>
+			</a>
+			</div> `;
+		return create;
+
+	}
+
+
+
+
+
 });
+
+
+
+
+
+
