@@ -11,6 +11,8 @@
 const BODY = document.body;
 var url = "js/properties.json";
 let data = [];
+
+
 let switchTheme = document.querySelector('input[type="checkbox"]');
 let filters = document.querySelector(".filters__container");
 let loader = document.querySelector(".loader");
@@ -415,9 +417,9 @@ const getIndexFn = () => {
 
 const printFavorite = () => {
 	let template = document.querySelector("#template-favorites").content;
-	 
+
 	let favoritesItems = JSON.parse(localStorage.getItem("favorites"));
-	if(favoritesItems != null)
+	if (favoritesItems != null)
 		favoritesItems.forEach(({ address, price, image }) => {
 			properties.resetContent(favoritesWrapper);
 			template.querySelector(".favorites__image img").setAttribute("src", image);
@@ -429,8 +431,8 @@ const printFavorite = () => {
 			const cloneTemplatesFav = template.cloneNode(true);
 			fragment.appendChild(cloneTemplatesFav);
 		});
-		favoritesWrapper.append(fragment);
- 
+	favoritesWrapper.append(fragment);
+
 };
 
 
@@ -443,28 +445,29 @@ createHighPrice(getResults);
 
 $(window).on('load', function () {
 
- 
 
-		$.ajax({
-			type: "GET",
-			url: url,
-			data: data,
-			dataType: "json",
-			beforeSend: function () {
-				$('.loading').html('loading...');
-			},
-			success: function (data) {
-				createIndexBoxes(data);
-				$('.loading').hide();
-			}
-		});
- 
+
+	$.ajax({
+		type: "GET",
+		url: url,
+		data: data,
+		dataType: "json",
+		beforeSend: function () {
+			$('.loading').html('loading...');
+		},
+		success: function (data) {
+			createIndexBoxes(data);
+			$('.loading').hide();
+		}
+	});
+
 
 	const getFavoritesContent = () => {
-		if(getFavoritesLength() != null)
-		$(".favorites__wrapper").css(
-			{ transform: "translateX(0%)", transition: "all .5s cubic-bezier(1,0,0,1)",
-			}, "slow");
+		if (getFavoritesLength() != null)
+			$(".favorites__wrapper").css(
+				{
+					transform: "translateX(0%)", transition: "all .5s cubic-bezier(1,0,0,1)",
+				}, "slow");
 	};
 	const closeFavorites = () => {
 		$(".favorites__wrapper").css(
@@ -476,7 +479,7 @@ $(window).on('load', function () {
 	$("#getFavorites").click(() => {
 		$("#favorites__wrapper--content").html(printFavorite);
 		getFavoritesContent();
-		 
+
 	});
 	$(".close").click(closeFavorites);
 
