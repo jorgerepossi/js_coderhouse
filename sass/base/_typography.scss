@@ -9,10 +9,9 @@
   font-family: var(--font-family-text);
 }
 
-.t-normal{
+.t-normal {
   font-weight: 400;
 }
-
 
 .superBigTitle {
   @include lineHeight(2rem);

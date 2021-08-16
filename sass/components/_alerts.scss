@@ -1,11 +1,11 @@
 .info {
-    padding: 1.1618rem;
-    margin: 1.1618rem;
-    &-alert {
-        background-color: hsl(53, 85%, 54%);
-    }
-    &-danger{
-        background-color: hsl(0, 85%, 54%);
-        color: white
-    }
+  padding: 1.1618rem;
+  margin: 1.1618rem;
+  &-alert {
+    background-color: hsl(53, 85%, 54%);
+  }
+  &-danger {
+    background-color: hsl(0, 85%, 54%);
+    color: white;
+  }
 }

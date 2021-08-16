@@ -4,30 +4,41 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/regular-straight.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/regular-straight.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header class="flex flex-wrap">
       <section class="flex flex-wrap justify-between full-width items-center">
         <section class="logo">
           <a href="index.html">
-            <svg class="jss158 jss5" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"></path><path fill="none" d="M0 0h24v24H0z"></path></svg>
+            <svg
+              class="jss158 jss5"
+              focusable="false"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              role="presentation"
+            >
+              <path
+                d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"
+              ></path>
+              <path fill="none" d="M0 0h24v24H0z"></path>
+            </svg>
           </a>
         </section>
         <section class="flex flex-wrap items-center">
-          <section class="px-4">
-            <i class="fi fi-rs-user"></i>Login
-          </section>
+          <section class="px-4"><i class="fi fi-rs-user"></i>Login</section>
           <section id="getFavorites" class="px-4">
             <i class="fi fi-rs-heart"></i>
             <span class="hide"></span>
           </section>
           <section class="switchTheme">
             <label class="switch">
-              <input type="checkbox">
+              <input type="checkbox" />
               <span class="slider round"></span>
             </label>
           </section>
@@ -38,7 +49,6 @@
       </section>
     </header>
 
-
     <section class="favorites__wrapper">
       <div class="close">
         <i class="fi fi-rs-cross-small"></i>
@@ -46,41 +56,60 @@
       <div id="favorites__wrapper--content"></div>
     </section>
 
-   <main>
-    <div id="root"></div>
-   </main>
+    <main id="app" role="main">
+      <section class="container mx-auto center">
+        <div id="root" class="px-4"></div>
+      </section>
+    </main>
 
     <template id="template-favorites">
-      <div class="flex flex-wrap justify-between py-4 mb-2 template-favorites ">
-        <div class="favorites__image in-xs-5">
-          <img src="" alt="" title="">
+      <div class="flex flex-wrap justify-between py-4 mb-2">
+        <div class="favorites__image in-xs-4">
+          <img src="" alt="" title="" />
         </div>
-        <div class="in-xs-7">
-          <div class="favorites__name"></div>
-          <div class="favorites__price"></div>
+        <div class="in-xs-8 favorites__wrapper--inner-content">
+          <div class="in-xs-9 px-0">
+            <div class="favorites__name"></div>
+            <div class="favorites__price"></div>
+          </div>
+          <div class="in-xs-3">
+            <div class="delete__favorite">
+              <buttom class="delete"
+                ><i class="fi fi-rs-cross-small"></i
+              ></buttom>
+            </div>
+          </div>
         </div>
       </div>
     </template>
     <footer id="footer" class="py-8 full-width">
-    
       <div class="container mx-auto px-4">
         <section class="flex flex-wrap">menu footer</section>
         <section class="flex flex-wrap justify-between">
-          <p>&copy; 2021 Alquileo - <a href="#">Privacidad</a>
+          <p>
+            &copy; 2021 Alquileo - <a href="#">Privacidad</a>
             <a href="#">Términos</a>
             <a href="#">Mapa del sitio</a>
           </p>
-          <p>Hecho con <i class="fi fi-rs-heart"></i>por Jo Repossi </p>
+          <p>Hecho con <i class="fi fi-rs-heart"></i>por Jo Repossi</p>
         </section>
       </div>
     </footer>
-    <script crossorigin type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script async defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&amp;libraries=geometry,visualization,places"></script>
+    <script
+      crossorigin
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+    <script
+      async
+      defer="defer"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&amp;libraries=geometry,visualization,places"
+    ></script>
     <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
     <script src="js/points.js"></script>
     <script src="js/app.js"></script>
     <script>
-      getResults(), createfavorites()
+      createfavorites();
     </script>
     <script src="js/page.js"></script>
   </body>
