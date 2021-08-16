@@ -352,13 +352,15 @@ const getActiveClass = () => {
  * @returns Params
  */
 const createfavorites = () => {
-  const click = resultsColumnItem.addEventListener("click", (e) => {
-    e.target.classList.add("disabled");
-    e.target.setAttribute("disabled", "disabled");
-    getFavourites(e);
-    getFavoritesLength();
-  });
-  return click;
+  if (resultsColumnItem) {
+    const click = resultsColumnItem.addEventListener("click", (e) => {
+      e.target.classList.add("disabled");
+      e.target.setAttribute("disabled", "disabled");
+      getFavourites(e);
+      getFavoritesLength();
+    });
+    return click;
+  }
 };
 
 /**
@@ -512,9 +514,6 @@ $(window).on("load", function () {
     },
   });
 
-  $(".favorites__wrapper--inner-content").click(() => {
-    console.log("hola");
-  });
   const getFavoritesContent = () => {
     if (getFavoritesLength() != null)
       $(".favorites__wrapper").css(
@@ -567,8 +566,13 @@ $(window).on("load", function () {
 			<div class="list__places--item">
 			<a href="resultados.html">
 			<div class="list__item">
-			<div class="list__places--item--picture">
-			<img src="${image}" class="" />
+			<div class="list__places--item--picture" style="
+			border-radius: 8px;
+    overflow: hidden;
+			height: 220px;
+			background-image: url(${image});
+			background-size: cover;">
+			 
 			</div>
 			<p class="pb-4">Resultados en ${city} </p>
 			<div class="list__places--item--text"> ${getTotalResults(city)}</div>

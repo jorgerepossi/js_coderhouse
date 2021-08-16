@@ -1,0 +1,103 @@
+.page {
+  height: 100%;
+  max-height: 680px;
+  &__title h2 {
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 0.618rem;
+  }
+
+  &__info {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__location--content {
+    display: flex;
+    color: var(--color-white-50);
+    align-items: center;
+
+    i {
+      margin: 0 0.5rem 0 0;
+    }
+  }
+
+  &__address {
+    color: var(--color-white-50);
+    text-transform: capitalize;
+    font-size: 0.9rem;
+  }
+
+  &__thumbs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    img {
+      border-radius: 6px;
+    }
+  }
+  &__type {
+    text-transform: capitalize;
+    color: var(--text-color) !important;
+  }
+  &__currency {
+    color: var(--text-color);
+  }
+  &__price {
+    color: var(--text-color);
+  }
+
+  &__price--block span {
+    font-size: 1.8rem;
+  }
+
+  &__small--info {
+    font-size: 1.2rem !important;
+    color: var(--color-white-40);
+  }
+
+  &__room--info {
+    color: var(--color-white-50);
+  }
+
+  &__separator {
+    overflow: hidden;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-white-50);
+    border-bottom: 1px solid var(--color-white-50);
+  }
+
+  &__separator--items {
+    position: relative;
+    width: 5px;
+    height: 10px;
+    background-color: transparent;
+    margin: 0 0.5rem;
+    overflow: hidden;
+    display: inline-block;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 5px;
+      height: 5px;
+      background-color: var(--color-white-50);
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.5;
+    }
+  }
+}
+
+.cover__first {
+  object-fit: cover;
+  vertical-align: bottom;
+  overflow: hidden;
+  border-radius: 8px;
+  img {
+    border-radius: 8px;
+  }
+}
