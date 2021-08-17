@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es_ES">
   <head>
-    <title>Alquileo | Propiedad | Alquilar nunca fue tán fácil</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafío: Simulador interactivo</title>
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/regular-straight.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&family=Open+Sans&display=swap"
       rel="stylesheet"
@@ -14,16 +16,6 @@
   </head>
 
   <body>
-    <div class="modalContainer out">
-      <div class="modalContent">
-        <div class="modal">
-          <div class="closeModal">x</div>
-          <div class="modalInfo">
-            <p>gracias</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <header class="flex flex-wrap">
       <section class="flex flex-wrap justify-between full-width items-center">
         <section class="logo">
@@ -69,38 +61,20 @@
     </section>
 
     <main id="app" role="main">
+      <section
+        class="hero"
+        style="background-image: url(assets/img/hero-banner-0.jpg"
+      ></section>
       <section class="container mx-auto center">
-        <div id="root" class="px-4">
-          <div id="pageInfo"></div>
-          <div>
-            <form id="form" class="px-4 py-4">
-              <input
-                type="text"
-                placeholder="nombre"
-                id="name"
-                name="name"
-                autocomplete="off"
-                class="input"
-                required="required"
-              />
-              <input
-                type="email"
-                placeholder="email"
-                id="email"
-                name="email"
-                autocomplete="off"
-                class="input"
-                required="required"
-              />
-              <button type="button" class="send button button--active">
-                quiero agendar una cita
-              </button>
-            </form>
-            <div class="errorMsg"></div>
+        <article id="listOf" class="content content--overlap px-6 py-6">
+          <div id="outputText"></div>
+          <div id="sort"></div>
+          <h2 class="px-4">Encuentra el lugar ideal para ti</h2>
+          <div class="list__places flex flex-wrap py-6">
+            <div class="loading"></div>
           </div>
-        </div>
+        </article>
       </section>
-
       <section class="container mx-auto center">
         <ul class="flex flex-wrap py-8 px-4 valueProps__list">
           <li class="valueProps__items">
@@ -164,116 +138,43 @@
       </section>
     </main>
 
-    <template id="content">
-      <div class="flex justify-between items-center py-8 px-4">
-        <div class="page__title">
-          <h2></h2>
-          <div class="page__location--content">
-            <i class="fi-rs-marker"></i> <span class="page__address"></span>
-            <span class="page__separator--items"></span>
-            <span class="page__location"></span>
-            <span class="page__separator--items"></span>
-            <span class="page__city"></span>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="prev">
-            <a href=""> </a>
-          </div>
-          <div class="next">
-            <a href=""> </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap">
-        <div class="page cover__first in-xs-12 in-md-8">
-          <img src="" alt="" />
-        </div>
-        <div class="in-xs-12 in-md-4">
-          <ul class="page__thumbs">
-            <li><img src="" alt="" class="img-first" /></li>
-            <li><img src="" alt="" class="img-second" /></li>
-            <li><img src="" alt="" class="img-third" /></li>
-            <li><img src="" alt="" class="img-four" /></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="flex">
-        <div class="page__info in-xs-12 in-md-8 my-8">
-          <p class="page__type"></p>
-          <div class="page__price--block">
-            <span class="page__currency"></span>
-            <span
-              ><span class="page__price"></span>
-              <span class="page__small--info">+ Expensas</span></span
-            >
-          </div>
-          <div class="flex flex-wrap">
-            <p class="page__room--info">
-              <span class="page__bedrooms"></span> Habitaciones
-              <span class="page__separator--items"></span>
-              <span class="page__bathrooms"></span> Baño
-            </p>
-          </div>
-          <div class="page__separator">
-            <p class="results__item--text t-normal"></p>
-          </div>
-        </div>
-      </div>
-    </template>
-
     <template id="template-favorites">
       <div class="flex flex-wrap justify-between py-4 mb-2">
-        <div class="favorites__image in-xs-4">
+        <div class="favorites__image in-xs-5">
           <img src="" alt="" title="" />
         </div>
-        <div class="in-xs-8 favorites__wrapper--inner-content">
-          <div class="in-xs-9 px-0">
+        <div class="in-xs-7">
+          <div class="in-xs-9">
             <div class="favorites__name"></div>
             <div class="favorites__price"></div>
           </div>
-          <div class="in-xs-3">
-            <div class="delete__favorite">
-              <buttom class="delete"
-                ><i class="fi fi-rs-cross-small"></i
-              ></buttom>
-            </div>
-          </div>
+          <div class="in-xs-3">delete</div>
         </div>
       </div>
     </template>
 
     <footer id="footer" class="py-8 full-width">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto">
         <section class="flex flex-wrap justify-between">
           <p>
-            &copy; 2021 Alquileo - <a href="#">Privacidad</a>
+            &copy; 2021 Alquileo -
+            <a href="#">Privacidad</a>
             <a href="#">Términos</a>
             <a href="#">Mapa del sitio</a>
           </p>
-          <p>Hecho con <i class="fi fi-rs-heart"></i>por Jo Repossi</p>
+          <p>
+            Hecho con
+            <i class="fi fi-rs-heart"></i>
+            por Jo Repossi
+          </p>
         </section>
       </div>
     </footer>
-
     <script
       crossorigin
       type="text/javascript"
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     ></script>
-    <script
-      async
-      defer="defer"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwrs1G7Zr1WbsHEtyU8ckaRQ3-W9-Y0vg&amp;libraries=geometry,visualization,places"
-    ></script>
-    <script src="https://unpkg.com/@googlemaps/markerwithlabel/dist/index.min.js"></script>
-
     <script src="js/app.js"></script>
-    <script>
-      createfavorites();
-    </script>
-    <script src="js/page.js"></script>
   </body>
 </html>

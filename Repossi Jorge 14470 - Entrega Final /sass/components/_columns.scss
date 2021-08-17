@@ -1,0 +1,31 @@
+@each $size, $name in $mq-breakpoints {
+  @include mq(#{$size}) {
+    @if $col > 0 {
+      @for $i from 1 through $col {
+        .in-#{$size}-#{$i} {
+          @include col($i);
+        }
+      }
+    }
+  }
+}
+
+@each $size, $name in $mq-breakpoints {
+  @if $col > 0 {
+    @for $i from 1 through $col {
+      .in-#{$size}-#{$i} {
+        @extend %floatleft;
+      }
+    }
+  }
+}
+
+@each $size, $name in $mq-breakpoints {
+  @if $col > 0 {
+    @for $i from 1 through $col {
+      .in-#{$size}-#{$i} {
+        @extend %paddleftright;
+      }
+    }
+  }
+}
